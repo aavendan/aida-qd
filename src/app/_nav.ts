@@ -5,7 +5,7 @@ export const navItems: INavData[] = [
   {
     name: 'Questions',
     url: '/questions',
-    icon: 'icon-question'
+    icon: 'icon-notebook'
   },
   {
     name: 'Distractors',
