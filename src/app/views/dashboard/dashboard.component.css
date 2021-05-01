@@ -30,3 +30,7 @@
 .card-footer {
     padding-bottom: 0px;
 }
+
+table td:first-child, table th:first-child {
+    max-width: 12rem;
+}
