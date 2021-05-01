@@ -1,6 +1,8 @@
 
 .table-outline {
-    background-color: #fcfeff;
+    /* background-color: #fcfeff; */
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
 }
 
 .table .thead-light th {
