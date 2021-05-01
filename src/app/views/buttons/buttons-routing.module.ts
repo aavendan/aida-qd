@@ -9,18 +9,18 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Buttons'
+      title: 'Questions'
     },
     children: [
       {
         path: '',
-        redirectTo: 'buttons'
+        redirectTo: 'list'
       },
       {
-        path: 'buttons',
+        path: 'list',
         component: ButtonsComponent,
         data: {
-          title: 'Buttons'
+          title: ''
         }
       },
       {

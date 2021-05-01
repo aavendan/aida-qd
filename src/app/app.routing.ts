@@ -12,7 +12,7 @@ import { RegisterComponent } from './views/register/register.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'theme/colors',
+    redirectTo: 'questions/list',
     pathMatch: 'full',
   },
   {
@@ -55,7 +55,7 @@ export const routes: Routes = [
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
       },
       {
-        path: 'buttons',
+        path: 'questions',
         loadChildren: () => import('./views/buttons/buttons.module').then(m => m.ButtonsModule)
       },
       {
@@ -75,7 +75,7 @@ export const routes: Routes = [
         loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
       },
       {
-        path: 'theme',
+        path: 'distractors',
         loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
       },
       {

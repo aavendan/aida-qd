@@ -3,8 +3,13 @@ import { INavData } from '@coreui/angular';
 export const navItems: INavData[] = [
   
   {
+    name: 'Questions',
+    url: '/questions',
+    icon: 'icon-question'
+  },
+  {
     name: 'Distractors',
-    url: '/theme/colors',
+    url: '/distractors',
     icon: 'icon-directions'
   },
   {

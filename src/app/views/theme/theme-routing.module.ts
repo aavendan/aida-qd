@@ -8,15 +8,15 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: ''
+      title: 'Question'
     },
     children: [
       {
         path: '',
-        redirectTo: 'colors'
+        redirectTo: 'list'
       },
       {
-        path: 'colors',
+        path: 'list',
         component: ColorsComponent,
         data: {
           title: 'Distractors'
