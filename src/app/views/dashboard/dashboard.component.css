@@ -1,0 +1,30 @@
+
+.table-outline {
+    background-color: #fcfeff;
+}
+
+.table .thead-light th {
+    background-color: #20a8d8;
+    color: #fcfeff;
+}
+
+.white-text {
+    color: white;
+}
+
+.bg-distractor {
+    background-color: #00bac4;
+}
+
+.switch-label.switch-sm {
+    width: 83px;
+    height: 22px;
+}
+
+.switch-label.switch-sm .switch-input:checked ~ .switch-slider::before {
+    transform: translateX(60px);
+}
+
+.card-footer {
+    padding-bottom: 0px;
+}

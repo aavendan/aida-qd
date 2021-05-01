@@ -1,0 +1,12 @@
+.answer {
+    font-size: 1.3rem;  
+}
+
+.switch-label.switch-sm {
+    width: 83px;
+    height: 22px;
+}
+
+.switch-label.switch-sm .switch-input:checked ~ .switch-slider::before {
+    transform: translateX(60px);
+}

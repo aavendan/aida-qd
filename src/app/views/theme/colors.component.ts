@@ -3,7 +3,8 @@ import { DOCUMENT } from '@angular/common';
 import { getStyle, rgbToHex } from '@coreui/coreui/dist/js/coreui-utilities';
 
 @Component({
-  templateUrl: 'colors.component.html'
+  templateUrl: 'colors.component.html',
+  styleUrls: ['colors.component.css']
 })
 export class ColorsComponent implements OnInit {
   constructor(@Inject(DOCUMENT) private _document: any) {}
