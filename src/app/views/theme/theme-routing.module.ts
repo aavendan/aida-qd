@@ -22,13 +22,7 @@ const routes: Routes = [
           title: 'Distractors'
         }
       },
-      {
-        path: 'typography',
-        component: TypographyComponent,
-        data: {
-          title: 'Typography'
-        }
-      }
+      
     ]
   }
 ];

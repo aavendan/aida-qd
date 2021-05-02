@@ -21,6 +21,11 @@ export const navItems: INavData[] = [
       text: 'NEW'
     } */
   },
+  {
+    name: 'Comparison',
+    url: '/features/comparison',
+    icon: 'icon-equalizer'
+  },
  /*  {
     title: true,
     name: 'Theme'

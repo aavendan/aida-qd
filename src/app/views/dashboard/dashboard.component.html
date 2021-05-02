@@ -171,7 +171,7 @@
   </div> -->
   
   <div class="row justify-content-center">
-    <!-- <div class="col-sm-6 col-lg-3">
+    <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <div class="brand-card-header bg-primary">
           <span class="text-uppercase h5 white-text text-center" >What is the capital of Belgium?</span>
@@ -182,8 +182,11 @@
             <div class="text-uppercase text-muted small">Answer</div>
           </div>
         </div>
+        <div class="card-footer pt-3 pb-3 text-center">
+          <a [routerLink]="['/features/comparison']" class="h6">Compare distractors</a>
+        </div>
       </div>
-    </div> -->
+    </div>
     <div class="col-sm-6 col-lg-3">
       <div class="brand-card">
         <!-- <div class="brand-card-header">
@@ -192,10 +195,33 @@
         <div class="brand-card-header">
           <div class="h5 text-center">Brussel</div>
         </div> -->
+        <!-- <div class="brand-card-header bg-primary">
+          <div class="text-white">
+            <div class="small">WHAT IS THE CAPITAL OF BELGIUM?</div>
+            <div class="small">Answer: <strong>Brussel</strong></div>
+          </div>
+        </div> -->
         <div class="brand-card-header bg-success">
           <span class="text-uppercase h2 white-text">BRUGGE</span>
+          <!-- <span 
+          tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+          placement="right">
+            <i class="h5 icon-info"></i>
+          </span> -->
+          <!-- <div class="btn-group float-right" dropdown>
+            <button type="button" class="btn btn-transparent dropdown-toggle p-0" dropdownToggle>
+              <i class="icon-settings"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </div> -->
+          <!-- <div class="text-value">9.823</div>
+          <div>Members online</div> -->
         </div>
-        <div class="brand-card-body">
+        <div class="brand-card-body border-top">
           <div>
             <div class="text-value">1st</div>
             <div class="text-uppercase text-muted small">Ranking</div>
@@ -778,8 +804,8 @@
                   <!-- <th class="text-center">Country</th> -->
                   <th>Value</th>
                   <!-- <th class="text-center">Payment Method</th>-->
-                  <th>Distractor Example</th>
-                  <th>Answer Example</th>  
+                  <th>Distractor</th>
+                  <th>Answer</th>  
                 </tr>
               </thead>
               <tbody>
@@ -787,20 +813,20 @@
                   <td>
                     <div>Percentage of appearence in texts</div>
                     <div class="small text-muted">
-                      Frequency they appear together in texts.
+                      Percentage that appear the answer and distractor in texts.
                     </div>
                   </td>
                   <td>
                     <div class="clearfix">
                       <div class="float-left">
-                        <strong>80%</strong>
+                        <strong>82%</strong>
                       </div>
                       <div class="float-right">
-                        <small class="text-muted">80 of 100 times</small>
+                        <small class="text-muted">82 of 100 times</small>
                       </div>
                     </div>
                     <div class="progress progress-xs">
-                      <div class="progress-bar bg-success" role="progressbar" style="width: 80%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar bg-success" role="progressbar" style="width: 82%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </td>
                   <td>
@@ -865,7 +891,7 @@
                   <td>
                     <div>Count capitals</div>
                     <div class="small text-muted">
-                      Check if distrator and answer have equal number of caps.
+                      Check if distractor and answer have equal number of caps.
                     </div>
                   </td>
                   <td>
@@ -916,7 +942,7 @@
                   <td>
                     <div>Has digits</div>
                     <div class="small text-muted">
-                      Checks whether distractor and answer have equal numbers of digits.
+                      Checks if distractor and answer have equal numbers of digits.
                     </div>
                   </td>
                   <td>

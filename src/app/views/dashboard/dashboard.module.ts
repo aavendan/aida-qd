@@ -7,14 +7,18 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { TooltipsComponent } from './../base/tooltips.component';
+
 @NgModule({
   imports: [
     FormsModule,
     DashboardRoutingModule,
     ChartsModule,
     BsDropdownModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    TooltipModule.forRoot()
   ],
-  declarations: [ DashboardComponent ]
+  declarations: [ DashboardComponent, TooltipsComponent ]
 })
 export class DashboardModule { }

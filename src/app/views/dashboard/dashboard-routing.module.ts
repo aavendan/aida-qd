@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
+import { TypographyComponent } from './../theme/typography.component';
 
 /* const routes: Routes = [
   {
@@ -44,6 +45,13 @@ const routes: Routes = [
             component: DashboardComponent,
             data: {
               title: 'Features'
+            }
+          },
+          {
+            path: 'comparison',
+            component: TypographyComponent,
+            data: {
+              title: 'Comparison'
             }
           },
           {
