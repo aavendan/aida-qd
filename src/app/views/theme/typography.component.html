@@ -366,14 +366,14 @@
               <div class="text-value">82%</div>
               <div>Percentage of appearence in texts (PAT)</div>
             </div>
-            <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+            <div class="chart-wrapper mt-3 mx-3 mychart">
               <canvas baseChart class="chart"
-              [datasets]="barChart1Data"
-              [labels]="barChart1Labels"
-              [options]="barChart1Options"
-              [colors]="barChart1Colours"
-              [legend]="barChart1Legend"
-              [chartType]="barChart1Type"></canvas>
+                [datasets]="barChart1Data"
+                [labels]="barChart1Labels"
+                [options]="barChart1Options"
+                [colors]="barChart1Colours"
+                [legend]="barChart1Legend"
+                [chartType]="barChart1Type"></canvas>
             </div>
           </div>
         </div>
@@ -384,7 +384,7 @@
               <div class="text-value">60%</div>
               <div>Longest substring (LS)</div>
             </div>
-            <div class="chart-wrapper mt-3 mx-3" style="height:91px;">
+            <div class="chart-wrapper mt-3 mx-3 mychart">
               <canvas baseChart class="chart"
               [datasets]="barChart2Data"
               [labels]="barChart2Labels"
@@ -392,6 +392,30 @@
               [colors]="barChart2Colours"
               [legend]="barChart2Legend"
               [chartType]="barChart2Type"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 offset-md-1">
+          <div class="card text-white bg-danger">
+            <div class="card-body pb-0">
+              <div class="text-value">0%</div>
+              <div>Has digits (HD)</div>
+            </div>
+            <div class="chart-wrapper mt-3 mx-3 mychart">
+              <!-- <canvas baseChart class="chart"
+                [datasets]="scatterChartData"
+                [options]="scatterChartOptions"
+                [labels]="scatterChartLabels"
+                [chartType]="scatterChartType">
+              </canvas> -->
+              <canvas baseChart class="chart"
+                [datasets]="barChart3Data"
+                [labels]="barChart3Labels"
+                [options]="barChart3Options"
+                [colors]="barChart3Colours"
+                [legend]="barChart3Legend"
+                [chartType]="barChart3Type"></canvas>
             </div>
           </div>
         </div>

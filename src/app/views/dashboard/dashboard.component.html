@@ -183,9 +183,6 @@
             <div class="text-uppercase text-muted small">Answer</div>
           </div>
         </div>
-        <div class="card-footer pt-3 pb-3 text-center">
-          <a [routerLink]="['/features/comparison']" class="h6">Compare distractors</a>
-        </div>
       </div>
     </div>
     <div class="col-sm-6 col-lg-3">
@@ -232,11 +229,14 @@
             <div class="text-uppercase text-muted small">Probability</div>
           </div>
         </div>
-        <div class="border-top pt-3 text-center">
+        <!-- <div class="border-top pt-3 text-center">
           <label class="switch switch-sm switch-label switch-info" >
             <input type="checkbox" class="switch-input">
             <span class="switch-slider" data-checked="saved" data-unchecked="unsaved"></span>
           </label>
+        </div> -->
+        <div class="card-footer pt-3 pb-3 text-center">
+          <a [routerLink]="['/features/comparison']" class="h6">Compare distractors</a>
         </div>
       </div>
     </div>

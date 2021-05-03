@@ -23,6 +23,8 @@ import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 
+import { NgApexchartsModule } from "ng-apexcharts";
+
 const APP_CONTAINERS = [
   DefaultLayoutComponent
 ];
@@ -59,6 +61,7 @@ import { ChartsModule } from 'ng2-charts';
     ChartsModule,
     IconModule,
     IconSetModule.forRoot(),
+    NgApexchartsModule
   ],
   declarations: [
     AppComponent,

@@ -81,6 +81,15 @@ export class DashboardComponent implements OnInit {
       enabled: false,
       custom: CustomTooltips
     },
+    /* tooltips: {
+      callbacks: {
+        label: (item, data) => 
+        {
+          console.log(item);
+          return 'Label: ' + item.xLabel + ' ' + item.yLabel
+        }
+      }
+    }, */
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
