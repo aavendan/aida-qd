@@ -25,17 +25,38 @@ export class TypographyComponent implements OnInit {
   ];
   public barChart1Labels: Array<any> = ['Anvers','Lille', 'Brugge','Barcelona', 'Paris'];
   public barChart1Options: any = {
-    tooltips: {
+    /* tooltips: {
       enabled: false,
       custom: CustomTooltips
-    },
+    }, */
+    /* animation: {
+        onComplete: function () {
+            var chartInstance = this.chart,
+            ctx = chartInstance.ctx;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            this.data.datasets.forEach(function (dataset, i) {
+                var meta = chartInstance.controller.getDatasetMeta(i);
+                meta.data.forEach(function (bar, index) {
+                    var data = dataset.data[index];
+                    ctx.fillText(data, bar._model.x, bar._model.y + 5);
+                });
+            });
+        }
+    }, */
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
         display: true,
+        ticks: {
+          fontColor: 'white',  // x axe labels (can be hexadecimal too)
+        },
       }],
       yAxes: [{
-        display: true
+        display: true,
+        ticks: {
+          fontColor: 'white',  // x axe labels (can be hexadecimal too)
+        },
       }]
     },
     legend: {
@@ -44,7 +65,7 @@ export class TypographyComponent implements OnInit {
   };
   public barChart1Colours: Array<any> = [
     {
-      backgroundColor: 'rgba(255,255,255,.3)',
+      backgroundColor: 'rgba(255, 255, 255,.3)',
       borderWidth: 0
     }
   ];
@@ -61,17 +82,23 @@ export class TypographyComponent implements OnInit {
   ];
   public barChart2Labels: Array<any> = ['Anvers','Brugge', 'Lille','Barcelona', 'Paris'];
   public barChart2Options: any = {
-    tooltips: {
+    /* tooltips: {
       enabled: false,
       custom: CustomTooltips
-    },
+    }, */
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
         display: true,
+        ticks: {
+          fontColor: 'white',  // x axe labels (can be hexadecimal too)
+        },
       }],
       yAxes: [{
-        display: true
+        display: true,
+        ticks: {
+          fontColor: 'white',  // x axe labels (can be hexadecimal too)
+        },
       }]
     },
     legend: {
@@ -87,27 +114,6 @@ export class TypographyComponent implements OnInit {
   public barChart2Legend = true;
   public barChart2Type = 'line';
 
-  // scatter
-  /* public scatterChartOptions: ChartOptions = {
-    responsive: true,
-  };
-  public scatterChartLabels: Label[] = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
-
-  public scatterChartData: ChartDataSets[] = [
-    {
-      data: [
-        { x: 1, y: 1 },
-        { x: 2, y: 3 },
-        { x: 3, y: -2 },
-        { x: 4, y: 4 },
-        { x: 5, y: -3 },
-      ],
-      label: 'Series A',
-      pointRadius: 10,
-    },
-  ];
-  public scatterChartType: ChartType = 'scatter'; */
-
   // barChart3
   public barChart3Data: Array<any> = [
     {
@@ -118,20 +124,24 @@ export class TypographyComponent implements OnInit {
   ];
   public barChart3Labels: Array<any> = ['Anvers','Lille', 'Vienna 1','Barcelona', 'Brugge'];
   public barChart3Options: any = {
-    tooltips: {
+    /* tooltips: {
       enabled: false,
       custom: CustomTooltips
-    },
+    }, */
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
         display: true,
+        ticks: {
+          fontColor: 'white',  // x axe labels (can be hexadecimal too)
+        },
       }],
       yAxes: [{
         /* display: true, */
         ticks: {
           stepSize: 1,
           beginAtZero: true,
+          fontColor: 'white',  // x axe labels (can be hexadecimal too)
           callback: function (value) {
             return value?'True':'False';
           }
