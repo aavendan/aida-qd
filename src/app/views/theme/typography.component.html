@@ -1,7 +1,7 @@
 <div class="animated fadeIn">
   <div class="card">
     <div class="card-header">
-      <strong><i class="icon-equalizer"></i>  Distractors comparison</strong> 
+      <strong><i class="icon-equalizer"></i>  1 vs 1</strong> 
     </div>
     <div class="card-body">
       <div class="row pb-3">
@@ -334,6 +334,72 @@
     
     </div>
   </div>
+  <div class="card">
+    <div class="card-header">
+      <strong><i class="icon-equalizer"></i>  1 vs All</strong> 
+    </div>
+    <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-md-3">
+          <div class="brand-card">
+            <div class="brand-card-header bg-success">
+              <span class="text-uppercase h2 white-text">BRUGGE</span>
+            </div>
+            <div class="brand-card-body border-top">
+              <div>
+                <div class="text-value">1st</div>
+                <div class="text-uppercase text-muted small">Ranking</div>
+              </div>
+              <div>
+                <div class="text-value">0.89</div>
+                <div class="text-uppercase text-muted small">Probability</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        
+        <div class="col-sm-6 col-lg-3">
+          <div class="card text-white bg-success">
+            <div class="card-body pb-0">
+              <div class="text-value">82%</div>
+              <div>Percentage of appearence in texts (PAT)</div>
+            </div>
+            <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+              <canvas baseChart class="chart"
+              [datasets]="barChart1Data"
+              [labels]="barChart1Labels"
+              [options]="barChart1Options"
+              [colors]="barChart1Colours"
+              [legend]="barChart1Legend"
+              [chartType]="barChart1Type"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3 offset-md-1">
+          <div class="card text-white bg-warning">
+            <div class="card-body pb-0">
+              <div class="text-value">60%</div>
+              <div>Longest substring (LS)</div>
+            </div>
+            <div class="chart-wrapper mt-3 mx-3" style="height:91px;">
+              <canvas baseChart class="chart"
+              [datasets]="barChart2Data"
+              [labels]="barChart2Labels"
+              [options]="barChart2Options"
+              [colors]="barChart2Colours"
+              [legend]="barChart2Legend"
+              [chartType]="barChart2Type"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- <div class="card">
     <div class="card-header">
       Headings

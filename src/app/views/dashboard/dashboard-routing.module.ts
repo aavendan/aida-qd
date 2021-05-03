@@ -39,7 +39,10 @@ const routes: Routes = [
           title: 'Distractor'
         },
         children: [
-          
+          {
+            path: '',
+            redirectTo: 'list'
+          },
           {
             path: 'list',
             component: DashboardComponent,
@@ -54,10 +57,7 @@ const routes: Routes = [
               title: 'Comparison'
             }
           },
-          {
-            path: '',
-            redirectTo: 'list'
-          }
+          
         ]
       }
      
