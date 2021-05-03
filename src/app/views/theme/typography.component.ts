@@ -75,7 +75,7 @@ export class TypographyComponent implements OnInit {
   // barChar2
   public barChart2Data: Array<any> = [
     {
-      data: [0, 60, 0, 0, 0],
+      data: [0, 60, 0, 1, 0],
       label: 'LS',
       barPercentage: 0.60,
     }
