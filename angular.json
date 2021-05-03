@@ -32,7 +32,6 @@
               ]
             },
             "scripts": [
-              "node_modules/apexcharts/dist/apexcharts.min.js"
             ],
             "allowedCommonJsDependencies": [
               "chart.js",
@@ -89,7 +88,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [
-              "node_modules/apexcharts/dist/apexcharts.min.js"
+            
             ],
             "styles": [
               "node_modules/@coreui/icons/css/free.css",
