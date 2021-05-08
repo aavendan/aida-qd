@@ -31,9 +31,24 @@
     padding-bottom: 0px;
 }
 
+
 table td:nth-child(3),
 table td:nth-child(4), 
 table th:nth-child(3),
 table th:nth-child(4){
     max-width: 10rem;
+}
+
+table td:nth-child(1),
+table td:nth-child(1){
+    max-width: 15rem;
+}
+
+
+td.up-value {
+    color: #4DBD74;
+}
+
+td.down-value {
+    color: #F86C6B;
 }

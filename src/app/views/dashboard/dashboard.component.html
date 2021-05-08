@@ -225,8 +225,8 @@
             <div class="text-uppercase text-muted small">Ranking</div>
           </div>
           <div>
-            <div class="text-value">0.89</div>
-            <div class="text-uppercase text-muted small">Probability</div>
+            <div class="text-value">89/100</div>
+            <div class="text-uppercase text-muted small">Points</div>
           </div>
         </div>
         <!-- <div class="border-top pt-3 text-center">
@@ -806,10 +806,38 @@
                   <th>Value</th>
                   <!-- <th class="text-center">Payment Method</th>-->
                   <th>Distractor</th>
-                  <th>Answer</th>  
+                  <th>Answer</th>
+                  <th>Points</th>  
                 </tr>
               </thead>
-              <tbody>
+              <tbody>    
+                <tr>
+                  <td>
+                    <div>Is capitalize</div>
+                    <div class="small text-muted">
+                      Check if both distractor and answer are all caps.
+                    </div>
+                  </td>
+                  <td>
+                    <div class="clearfix">
+                      <div class="float-left badge-pill badge-success">
+                        <strong>True</strong>
+                      </div>
+                      <div class="float-right">
+                        <small class="text-muted">all characters</small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="text-muted"><strong>BRUGGE</strong></div>
+                  </td>
+                  <td>
+                    <div class="text-muted"><strong>BRUSSEL</strong></div>
+                  </td>
+                  <td class="up-value">
+                    <i class="fa fa-arrow-up fa-lg"></i><strong> 92</strong>
+                  </td>
+                </tr> 
                 <tr>
                   <td>
                     <div>Percentage of appearence in texts</div>
@@ -836,31 +864,10 @@
                   <td>
                     <div class="text-muted"><strong>80</strong> times</div>
                   </td>
+                  <td class="up-value">
+                    <i class="fa fa-arrow-up fa-lg"></i><strong> 55</strong>
+                  </td>
                 </tr>
-                <tr>
-                  <td>
-                    <div>Is capitalize</div>
-                    <div class="small text-muted">
-                      Check if both distractor and answer are all caps.
-                    </div>
-                  </td>
-                  <td>
-                    <div class="clearfix">
-                      <div class="float-left badge-pill badge-success">
-                        <strong>True</strong>
-                      </div>
-                      <div class="float-right">
-                        <small class="text-muted">all characters</small>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="text-muted"><strong>BRUGGE</strong></div>
-                  </td>
-                  <td>
-                    <div class="text-muted"><strong>BRUSSEL</strong></div>
-                  </td>
-                </tr> 
                 <tr>
                   <td>
                     <div>Longest substring</div>
@@ -887,6 +894,9 @@
                   <td>
                     <div class="text-muted"><strong>BRU</strong> SSEL</div>
                   </td>
+                  <td class="up-value">
+                    <i class="fa fa-arrow-up fa-lg"></i><strong> 42</strong>
+                  </td>
                 </tr> 
                 <tr>
                   <td>
@@ -910,6 +920,9 @@
                   </td>
                   <td>
                     <div class="text-muted"><strong>BRUSSE</strong> L</div>
+                  </td>
+                  <td class="down-value">
+                    <i class="fa fa-arrow-down fa-lg"></i><strong> 60</strong>
                   </td>
                 </tr>
                 <tr>
@@ -938,6 +951,9 @@
                   <td>
                     <div class="text-muted">The City of <strong>BRUSSEL</strong> is the largest munici ...</div>
                   </td>
+                  <td class="down-value">
+                    <i class="fa fa-arrow-down fa-lg"></i><strong> 30</strong>
+                  </td>
                 </tr>
                 <tr>
                   <td>
@@ -961,6 +977,9 @@
                   </td>
                   <td>
                     <div class="text-muted">None</div>
+                  </td>
+                  <td class="down-value">
+                    <i class="fa fa-arrow-down fa-lg"></i><strong> 10</strong>
                   </td>
                 </tr>
                 <!-- <tr>
@@ -1150,6 +1169,15 @@
                   </td>
                 </tr> -->
               </tbody>
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th>Total Points</th>
+                  <th>89/100</th>
+                </tr>
+              </tfoot>
             </table>
           </div>
         </div>
