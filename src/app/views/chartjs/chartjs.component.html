@@ -1,6 +1,32 @@
 <div class="animated fadeIn">
-  <div class="card-columns cols-2">
-    <div class="card">
+  <div class="row"> <!-- card-columns cols-2 -->
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          Explanations
+          <!-- <div class="card-header-actions">
+            <a href="http://www.chartjs.org">
+              <small class="text-muted">docs</small>
+            </a>
+          </div> -->
+        </div>
+        <div class="card-body">
+          <div class="chart-wrapper">
+            <canvas baseChart
+              [datasets]="scatterChartData"
+              [options]="scatterChartOptions"
+              [labels]="scatterChartLabels"
+              [chartType]="scatterChartType">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="card">
       <div class="card-header">
         Line Chart
         <div class="card-header-actions">
@@ -125,6 +151,4 @@
           (chartClick)="chartClicked($event)"></canvas>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+    </div> -->

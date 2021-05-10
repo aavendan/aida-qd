@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+/* import { Component } from '@angular/core'; */
+
+import { Component, OnInit } from '@angular/core';
+import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
+import { Label, Color } from 'ng2-charts';
 
 @Component({
   templateUrl: 'chartjs.component.html'
@@ -85,13 +89,125 @@ export class ChartJSComponent {
 
   public polarAreaChartType = 'polarArea';
 
+  // scatter
+ 
+  public scatterChartOptions: ChartOptions = {
+    legend: {
+      display: false,
+    },
+    title: {
+      text: 'Earned points per Percentage of appearence in texts (PAT)',
+      display: true
+    },
+    responsive: true,
+    tooltips: {
+      enabled: true,
+      callbacks: {
+        /* label: function (tooltipItem, data) {
+          return ['first thing', 'another thing', 'and another one'];
+        } */
+       label: function (tooltipItem, data) {
+        let label = data.labels[tooltipItem.index];
+        let value = data.datasets[0].data[tooltipItem.index]['x'] 
+        let points = data.datasets[0].data[tooltipItem.index]['y']
+        return label +" " /* + " PAT: "+value+"%  ("+points+" points)" */;
+       },
+       /* afterLabel: function(tooltipItem, data) {
+        var someValue2 = "Mindfuc";
+        return someValue2;
+       }, */
+       footer: function(tooltipItems, data) {
+         let label = tooltipItems[0].xLabel
+         let value = tooltipItems[0].yLabel
+         /*  let label = data.labels[tooltipItems.index];
+          let value = data.datasets[0].data[tooltipItems.index]['x'] 
+          let points = data.datasets[0].data[tooltipItems.index]['y'] */
+          /* return label + " PAT: "+value+"%  ("+points+" points)"; */
+          return ['PAT:  '+label+'%', value+' points '];
+        }
+      },
+    },
+    scales: {
+      xAxes: [
+        { 
+          ticks: { 
+            min: 0, 
+            max: 100, 
+          },
+          scaleLabel: {
+              display: true,
+              labelString: 'Percentage of appearence in texts (PAT)'
+          } 
+        }
+      ],
+      yAxes: [
+        { 
+          ticks: { 
+            min: -100, 
+            max: 100,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Points'
+          }  
+       }
+      ],
+    },
+    
+  };
+  public scatterChartLabels: Label[] = ['Brugge', 'Paris', 'Barcelona', 'Lille', 'Amsterdam', 'NYC', 'London'];
+
+  public scatterChartData: ChartDataSets[] = [
+    {
+      data: [
+        { x: 80, y: 82 },
+        { x: 60, y: 65 },
+        { x: 75, y: 77 },
+        { x: 73, y: 72 },
+        { x: 50, y: -30 },
+        { x: 45, y: -30 },
+        { x: 43, y: -28 },
+      ],
+      pointHoverBackgroundColor: function(context) {
+        var index = context.dataIndex;
+        var value = context.dataset.data[index]['y'];
+        
+        return value < 0 ? '#F86C6B' :  '#4DBD74';
+      },
+      pointHoverBorderColor: function(context) {
+        var index = context.dataIndex;
+        var value = context.dataset.data[index]['y'];
+        
+        return value < 0 ? '#F86C6B' :  '#4DBD74';
+      },
+      pointBackgroundColor: function(context) {
+        var index = context.dataIndex;
+        var value = context.dataset.data[index]['y'];
+        
+        return value < 0 ? '#F86C6B' :  '#4DBD74';
+      },
+      label: 'Series A',
+      pointRadius: 10,
+    },
+  ];
+  public scatterChartType: ChartType = 'scatter';
+
   // events
+  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    console.log(event, active);
+  }
+
+  /* // events
   public chartClicked(e: any): void {
     console.log(e);
   }
 
   public chartHovered(e: any): void {
     console.log(e);
-  }
+  } */
 
 }

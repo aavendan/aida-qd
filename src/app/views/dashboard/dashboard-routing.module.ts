@@ -57,7 +57,6 @@ const routes: Routes = [
               title: 'Comparison'
             }
           },
-          
         ]
       }
      

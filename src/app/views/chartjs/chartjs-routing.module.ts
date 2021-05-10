@@ -3,13 +3,44 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ChartJSComponent } from './chartjs.component';
 
-const routes: Routes = [
+/* const routes: Routes = [
   {
     path: '',
     component: ChartJSComponent,
     data: {
-      title: 'Charts'
+      title: 'Question'
     }
+  }
+]; */
+
+const routes: Routes = [
+  {
+    path: '',
+    data: {
+      title: 'Question'
+    },
+    children: [
+      {
+        path: '',
+        data: {
+          title: 'Distractor'
+        },
+        children: [
+          {
+            path: '',
+            redirectTo: 'list'
+          },
+          {
+            path: 'list',
+            component: ChartJSComponent,
+            data: {
+              title: 'Explanations'
+            }
+          }
+        ]
+      }
+     
+    ]
   }
 ];
 

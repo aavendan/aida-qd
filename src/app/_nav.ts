@@ -10,7 +10,7 @@ export const navItems: INavData[] = [
   {
     name: 'Distractors',
     url: '/distractors',
-    icon: 'icon-directions'
+    icon: 'icon-directions',
   },
   {
     name: 'Features',
@@ -25,6 +25,11 @@ export const navItems: INavData[] = [
     name: 'Comparison',
     url: '/features/comparison',
     icon: 'icon-equalizer'
+  },
+  {
+    name: 'Explanations',
+    url: '/explanations',
+    icon: 'icon-chart'
   },
  /*  {
     title: true,
