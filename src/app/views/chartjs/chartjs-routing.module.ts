@@ -34,7 +34,7 @@ const routes: Routes = [
             path: 'list',
             component: ChartJSComponent,
             data: {
-              title: 'Explanations'
+              title: 'Points'
             }
           }
         ]

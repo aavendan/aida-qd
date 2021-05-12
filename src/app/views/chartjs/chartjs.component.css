@@ -1,0 +1,23 @@
+.table .thead-light th {
+    background-color: #20a8d8;
+    color: #fcfeff;
+}
+
+td.up-value {
+    color: #4DBD74;
+}
+
+td.mid-value {
+    color: #ffc107;
+}
+
+td.down-value {
+    color: #F86C6B;
+}
+
+alert[type="md-color"] {
+    background-color: #7B1FA2;
+    border-color: #4A148C;
+    color: #fff;
+    padding: 2%;
+  }

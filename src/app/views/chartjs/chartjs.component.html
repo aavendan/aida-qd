@@ -1,9 +1,9 @@
 <div class="animated fadeIn">
-  <div class="row"> <!-- card-columns cols-2 -->
-    <div class="col-12">
+  <div class="card-columns cols-2"> <!--  -->
+    <!-- <div class="col-12"> -->
       <div class="card">
         <div class="card-header">
-          Explanations
+          <strong>Points </strong>
           <!-- <div class="card-header-actions">
             <a href="http://www.chartjs.org">
               <small class="text-muted">docs</small>
@@ -11,14 +11,132 @@
           </div> -->
         </div>
         <div class="card-body">
-          <div class="chart-wrapper">
-            <canvas baseChart
-              [datasets]="scatterChartData"
-              [options]="scatterChartOptions"
-              [labels]="scatterChartLabels"
-              [chartType]="scatterChartType">
-            </canvas>
+          <!-- <div class="row">
+            <button type="button" class="btn btn-primary">
+               <span class="badge badge-light">{{points}} points</span>
+            </button>
+          </div> -->
+          <div class="text-center mb-2">
+            <alert type="md-color" class="rounded">
+              {{distractor}}: <strong>{{points}} points</strong>
+            </alert>
           </div>
+          <div class="chart-wrapper">
+            <canvas baseChart class="chart"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            ></canvas>
+            <!--  (chartClick)="chartClicked($event)" -->
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <strong>Features values and points</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <table class="table table-responsive-sm table-hover table-outline mb-0 ">
+              <thead class="thead-light">
+                <tr>
+                  <th>Feature</th>
+                  <th>Value</th>
+                  <th>Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div>Percentage of appearence in texts (PAT)</div>
+                    <div class="small text-muted">
+                      Percentage that appear the answer and distractor in texts.
+                    </div>
+                  </td>
+                  <td>
+                    <div class="clearfix">
+                      <div class="float-left">
+                        <strong>{{valuePAT}}%</strong>
+                      </div>
+                      <div class="float-right">
+                        <small class="text-muted">{{valuePAT}} of 100 times</small>
+                      </div>
+                    </div>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-success" role="progressbar" style="width: {{valuePAT}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                  <td class="{{pointsPATClass}}">
+                    <i class="fa {{pointPATsign}} fa-lg"></i><strong> {{pointsPAT}}</strong>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div>Longest substring (LS)</div>
+                    <div class="small text-muted">
+                      Percentage of characters shared among answer and distractor.
+                    </div>
+                  </td>
+                  <td>
+                    <div class="clearfix">
+                      <div class="float-left">
+                        <strong>{{valueLS}}%</strong>
+                      </div>
+                      <div class="float-right">
+                        <small class="text-muted">{{ valueLSRounded }} of {{distractor.length}} characters</small>
+                      </div>
+                    </div>
+                    <div class="progress progress-xs">
+                      <div class="progress-bar bg-warning" role="progressbar" style="width: {{valueLS}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </td>
+                  <td class="{{pointsLSClass}}">
+                    <i class="fa {{pointLSsign}} fa-lg"></i><strong> {{pointsLS}}</strong>
+                  </td>
+                </tr> 
+              </tbody>
+            </table>
+          </div>    
+        </div>
+      </div>
+    <!-- </div> -->
+  </div>
+  <div class="card-columns cols-2">
+    <div class="card">
+      <div class="card-header">
+        <strong>Points per Percentage of appearence in texts (PAT)</strong>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart
+            id="points"
+            [datasets]="bubbleChartData1"
+            [options]="bubbleChartOptions1"
+            [labels]="bubbleChartLabels1"
+            [chartType]="bubbleChartType1"
+            >
+            <!-- (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)" -->
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <strong>Points per Longest substring (LS)</strong>
+      </div>
+      <div class="card-body">
+        <div class="chart-wrapper">
+          <canvas baseChart
+            id="points2"
+            [datasets]="bubbleChartData2"
+            [options]="bubbleChartOptions2"
+            [labels]="bubbleChartLabels2"
+            [chartType]="bubbleChartType2">
+          </canvas>
         </div>
       </div>
     </div>

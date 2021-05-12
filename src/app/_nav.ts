@@ -27,8 +27,8 @@ export const navItems: INavData[] = [
     icon: 'icon-equalizer'
   },
   {
-    name: 'Explanations',
-    url: '/explanations',
+    name: 'Points',
+    url: '/points',
     icon: 'icon-chart'
   },
  /*  {
