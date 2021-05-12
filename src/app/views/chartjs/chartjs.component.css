@@ -15,8 +15,14 @@ td.down-value {
     color: #F86C6B;
 }
 
+table td:nth-child(1),
+table td:nth-child(1){
+    max-width: 15rem;
+}
+
 div.md-color {
     /* background-color: #7B1FA2;
     border-color: #4A148C; */
     color: #000;
-  }
+}
+
