@@ -3,7 +3,7 @@
     <!-- <div class="col-12"> -->
       <div class="card">
         <div class="card-header">
-          <strong>Points </strong>
+          {{distractor}}: <strong>{{points}} points</strong>
           <!-- <div class="card-header-actions">
             <a href="http://www.chartjs.org">
               <small class="text-muted">docs</small>
@@ -16,11 +16,6 @@
                <span class="badge badge-light">{{points}} points</span>
             </button>
           </div> -->
-          <div class="text-center mb-2">
-            <alert type="md-color" class="rounded">
-              {{distractor}}: <strong>{{points}} points</strong>
-            </alert>
-          </div>
           <div class="chart-wrapper">
             <canvas baseChart class="chart"
             [datasets]="barChartData"
