@@ -72,12 +72,15 @@ export class ChartJSComponent {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels: string[] = ['Brugge', 'Paris', 'Barcelona', 'Lille', 'Amsterdam', 'NYC', 'London'];
+  public barChartLabels: string[] = ['Brugge', 'Paris', 'Barcelona', 'Lille', 'Anvers', 'NYC', 'London'];
   public barChartType = 'bar';
-  public barChartLegend = true;
-
+  public barChartLegend = false;
+  public chartColors: any[] = [
+    { 
+      backgroundColor:["#4DBD74", "#4DBD74", "#4DBD74", "#FFC107", "#FFC107", "#F86C6B","#F86C6B"] 
+    }];
   public barChartData: ChartDataSets[] = [
-    {data: [89, 80, 80, 74, -30, 45, 32], label: 'Points'}
+    {data: [89, 80, 80, 74, 62, 45, 32], label: 'Points'}
     /* {data: [82, 65, 77, 72, -30, -30, -28], label: 'Percentage of appearence in texts (PAT)'},
     {data:  [60, 0, 10, 0, 0, 0, 0], label: 'Longest substring (LS)'}, */
     /* tooltips: {
@@ -187,7 +190,7 @@ export class ChartJSComponent {
     },
     
   };
-  public bubbleChartLabels1: Label[] = ['Brugge', 'Paris', 'Barcelona', 'Lille', 'Amsterdam', 'NYC', 'London'];
+  public bubbleChartLabels1: Label[] = ['Brugge', 'Paris', 'Barcelona', 'Lille', 'Anvers', 'NYC', 'London'];
 
   public bubbleChartData1: ChartDataSets[] = [
     {
@@ -297,7 +300,7 @@ export class ChartJSComponent {
     },
     
   };
-  public bubbleChartLabels2: Label[] = ['Brugge', 'Paris', 'Barcelona', 'Lille', 'Amsterdam', 'NYC', 'London'];
+  public bubbleChartLabels2: Label[] = ['Brugge', 'Paris', 'Barcelona', 'Lille', 'Anvers', 'NYC', 'London'];
 
   public bubbleChartData2: ChartDataSets[] = [
     {
