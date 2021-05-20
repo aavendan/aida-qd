@@ -1,8 +1,36 @@
 <div class="animated fadeIn">
   
   <div class="row justify-content-center">
-    <div class="col-md-3">
-      <div class="brand-card">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header bg-info">
+          <span class="text-uppercase h5 white-text text-center pt-3" >
+            {{question}}
+          </span>
+        </div>
+        <div class="card-body">
+          <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+            <div class="example-box" *ngFor="let distractor of distractors" cdkDrag>
+              {{distractor.text}} <span class="{{distractor.class}}">{{distractor.type}}</span>
+            </div>
+          </div>
+          
+
+          <!-- <div class="text-center text-value"  *ngFor="let distractor of distractors">{{distractor}}</div>
+          <div class="card-body text-center font-italic"  *ngIf="distractors.length == 0">
+            None
+          </div> -->
+        </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-block btn-block2 btn-success" (click)="download()">
+            <i class="icon-arrow-down-circle icons mr-1"></i> Download
+          </button>
+          <!-- <div class="card-header-actions">
+            
+          </div> -->
+        </div>
+      </div>
+      <!-- <div class="brand-card">
         <div class="brand-card-header bg-primary">
           <span class="text-uppercase h5 white-text text-center" >What is the capital of Belgium?</span>
         </div>
@@ -12,8 +40,23 @@
             <div class="text-uppercase text-muted small">Answer</div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
+    <!--  -->
+    <!-- <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">
+          <div class="text-value text-center">Selected distractors</div>
+        </div>
+        <div class="card-body" *ngIf="distractors.length > 0">
+          <div class="text-center text-value"  *ngFor="let distractor of distractors">{{distractor}}</div>
+        </div>
+        <div class="card-body text-center font-italic"  *ngIf="distractors.length == 0">
+          None
+        </div>
+      </div>
+      
+    </div> -->
   </div>
 
   <!-- <div class="col-sm-6 col-md-3 ">
@@ -53,8 +96,9 @@
                   </div>
                 </div>
                 <div class="border-top pt-3 text-center">
-                  <label class="switch switch-sm switch-label switch-info" >
-                    <input type="checkbox" class="switch-input">
+                  <label class="switch switch-sm switch-label switch-info">
+                    <!-- [disabled]="enabling($event)" -->
+                    <input type="checkbox" class="switch-input"  (change)="addDistractor($event, 'text-success')" value="Brugge">
                     <span class="switch-slider" data-checked="saved" data-unchecked="unsaved"></span>
                   </label>
                 </div>
@@ -80,7 +124,7 @@
                 </div>
                 <div class="border-top pt-3 text-center">
                   <label class="switch switch-sm switch-label switch-info" >
-                    <input type="checkbox" class="switch-input" checked>
+                    <input type="checkbox" class="switch-input"(change)="addDistractor($event, 'text-success')" value="Paris">
                     <span class="switch-slider" data-checked="saved" data-unchecked="unsaved"></span>
                   </label>
                 </div>
@@ -107,7 +151,7 @@
                 </div>
                 <div class="border-top pt-3 text-center">
                   <label class="switch switch-sm switch-label switch-info" >
-                    <input type="checkbox" class="switch-input">
+                    <input type="checkbox" class="switch-input" (change)="addDistractor($event, 'text-success')" value="Barcelona">
                     <span class="switch-slider" data-checked="saved" data-unchecked="unsaved"></span>
                   </label>
                 </div>
@@ -134,7 +178,7 @@
                 </div>
                 <div class="border-top pt-3 text-center">
                   <label class="switch switch-sm switch-label switch-info" >
-                    <input type="checkbox" class="switch-input">
+                    <input type="checkbox" class="switch-input" (change)="addDistractor($event, 'text-warning')" value="Lille">
                     <span class="switch-slider" data-checked="saved" data-unchecked="unsaved"></span>
                   </label>
                 </div>
@@ -160,7 +204,7 @@
                 </div>
                 <div class="border-top pt-3 text-center">
                   <label class="switch switch-sm switch-label switch-info" >
-                    <input type="checkbox" class="switch-input">
+                    <input type="checkbox" class="switch-input" (change)="addDistractor($event, 'text-warning')" value="Anvers">
                     <span class="switch-slider" data-checked="saved" data-unchecked="unsaved"></span>
                   </label>
                 </div>
@@ -186,7 +230,7 @@
                 </div>
                 <div class="border-top pt-3 text-center">
                   <label class="switch switch-sm switch-label switch-info" >
-                    <input type="checkbox" class="switch-input" checked>
+                    <input type="checkbox" class="switch-input" (change)="addDistractor($event, 'text-danger')" value="NYC">
                     <span class="switch-slider" data-checked="saved" data-unchecked="unsaved"></span>
                   </label>
                 </div>
@@ -212,7 +256,7 @@
                 </div>
                 <div class="border-top pt-3 text-center">
                   <label class="switch switch-sm switch-label switch-info" >
-                    <input type="checkbox" class="switch-input">
+                    <input type="checkbox" class="switch-input" (change)="addDistractor($event, 'text-danger')" value="London">
                     <span class="switch-slider" data-checked="saved" data-unchecked="unsaved"></span>
                   </label>
                 </div>
@@ -238,7 +282,7 @@
                 </div>
                 <div class="border-top pt-3 text-center">
                   <label class="switch switch-sm switch-label switch-info" >
-                    <input type="checkbox" class="switch-input">
+                    <input type="checkbox" class="switch-input" (change)="addDistractor($event, 'text-danger')" value="Kaapstad">
                     <span class="switch-slider" data-checked="saved" data-unchecked="unsaved"></span>
                   </label>
                 </div>
@@ -264,7 +308,7 @@
                 </div>
                 <div class="border-top pt-3 text-center">
                   <label class="switch switch-sm switch-label switch-info" >
-                    <input type="checkbox" class="switch-input">
+                    <input type="checkbox" class="switch-input" (change)="addDistractor($event, 'text-danger')" value="Luxembourg">
                     <span class="switch-slider" data-checked="saved" data-unchecked="unsaved"></span>
                   </label>
                 </div>

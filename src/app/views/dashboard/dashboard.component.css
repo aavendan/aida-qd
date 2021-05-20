@@ -49,6 +49,10 @@ td.up-value {
     color: #4DBD74;
 }
 
+td.mid-value {
+    color: #ffc107;
+}
+
 td.down-value {
     color: #F86C6B;
 }

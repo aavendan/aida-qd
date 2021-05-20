@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ColorsComponent } from './colors.component';
 import { TypographyComponent } from './typography.component';
 
+
 const routes: Routes = [
   {
     path: '',
