@@ -97,6 +97,6 @@ export class ColorsComponent implements OnInit {
 
     const c = JSON.stringify(output);
     const file = new Blob([c], {type: 'text/json'});
-    this.convert(file,"fileName.json");
+    this.convert(file,"AIDA-distractorgenerator.json");
   }
 }
