@@ -9,6 +9,6 @@ import { ChartJSRoutingModule } from './chartjs-routing.module';
     ChartJSRoutingModule,
     ChartsModule
   ],
-  declarations: [ ChartJSComponent ]
+  declarations: [ ChartJSComponent, WidgetsComponent ]
 })
 export class ChartJSModule { }
