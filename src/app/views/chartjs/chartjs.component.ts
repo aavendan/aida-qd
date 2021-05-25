@@ -305,7 +305,7 @@ export class ChartJSComponent {
   public bubbleChartData2: ChartDataSets[] = [
     {
       data:[
-        { x: 60, y: 60, r: 5 },
+        { x: 60, y: 20, r: 5 },
         { x: 0, y: 0, r: 5 },
         { x: 10, y: 10, r: 5 },
         { x: 0, y: 0, r: 5 },

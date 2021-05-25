@@ -2,16 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ChartJSComponent } from './chartjs.component';
-
-/* const routes: Routes = [
-  {
-    path: '',
-    component: ChartJSComponent,
-    data: {
-      title: 'Question'
-    }
-  }
-]; */
+import { WidgetsComponent } from './../widgets/widgets.component';
 
 const routes: Routes = [
   {
@@ -23,12 +14,19 @@ const routes: Routes = [
       {
         path: '',
         data: {
-          title: 'Distractor'
+          title: 'Explanations'
         },
         children: [
           {
             path: '',
             redirectTo: 'list'
+          },
+          {
+            path: 'shap',
+            component: WidgetsComponent,
+            data: {
+              title: 'Shap'
+            }
           },
           {
             path: 'list',
@@ -43,6 +41,16 @@ const routes: Routes = [
     ]
   }
 ];
+
+/* const routes: Routes = [
+  {
+    path: '',
+    component: ChartJSComponent,
+    data: {
+      title: 'Question'
+    }
+  }
+]; */
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
