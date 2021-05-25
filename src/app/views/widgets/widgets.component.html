@@ -1,25 +1,5 @@
 <div class="animated fadeIn">
-  <div class="card-columns cols-2">
-    <div class="card">
-      <div class="card-header">
-        Waterfall view
-      </div>
-      <div class="card-body">
-        <img src="assets/img/shap/waterfall-AIDA.jpg" width="100%">
-      </div>
-    </div>
-  
-    <div class="card">
-      <div class="card-header">
-        Forces view
-      </div>
-      <div class="card-body">
-        <img src="assets/img/shap/forces-AIDA.jpg" width="100%">
-      </div>
-    </div>
-  </div>
-</div>
-<!-- <div class="row">
+  <div class="row">
     <div class="col-sm-6 col-lg-3">
       <div class="card text-white bg-primary">
         <div class="card-body pb-0">
@@ -960,4 +940,41 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
+</div>
+<!-- <div class="row col-12">
+  <div class="card">
+    <div class="card-header">
+      Points per distractor
+    </div>
+    <div class="card-body">
+      <div class="chart-wrapper">
+        <canvas baseChart
+          [datasets]="bubbleChartData1"
+          [options]="bubbleChartOptions1"
+          [labels]="bubbleChartLabels1"
+          [chartType]="bubbleChartType1"> 
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row col-12">
+  <div class="card">
+    <div class="card-header">
+      Forces view
+    </div>
+    <div class="card-body">
+      <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+        <canvas baseChart class="chart"
+        [datasets]="lineChart1Data"
+        [labels]="lineChart1Labels"
+        [options]="lineChart1Options"
+        [colors]="lineChart1Colours"
+        [legend]="lineChart1Legend"
+        [chartType]="lineChart1Type"></canvas>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!--  -->
