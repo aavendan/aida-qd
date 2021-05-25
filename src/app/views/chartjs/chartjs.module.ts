@@ -11,6 +11,6 @@ import { WidgetsComponent } from './../widgets/widgets.component';
     ChartJSRoutingModule,
     ChartsModule
   ],
-  declarations: [ ChartJSComponent, WidgetsComponent ]
+  declarations: [ ChartJSComponent ]
 })
 export class ChartJSModule { }
