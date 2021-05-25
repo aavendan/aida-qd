@@ -15,42 +15,22 @@ export const navItems: INavData[] = [
   {
     name: 'Features',
     url: '/features',
-    icon: 'icon-book-open',
+    icon: 'icon-list',
     /* badge: {
       variant: 'info',
-      text: 'OPEN'
-    }, */
-    children: [
-      {
-        name: 'List',
-        url: '/features/list',
-        icon: 'icon-list'
-      },
-      {
-        name: 'Comparison',
-        url: '/features/comparison',
-        icon: 'icon-equalizer'
-      },
-    ]
+      text: 'NEW'
+    } */
+  },
+  {
+    name: 'Comparison',
+    url: '/features/comparison',
+    icon: 'icon-equalizer'
   },
   {
     name: 'Points',
     url: '/points',
-    icon: 'icon-grid',
-    children: [
-      {
-        name: 'Shap',
-        url: '/points/shap',
-        icon: 'icon-speedometer'
-      },
-      {
-        name: 'AIDA',
-        url: '/points/list',
-        icon: 'icon-graph'
-      },
-    ]
+    icon: 'icon-chart'
   },
-  
  /*  {
     title: true,
     name: 'Theme'
