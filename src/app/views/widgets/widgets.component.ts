@@ -1,12 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { getStyle } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+
+import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
+import { Label, Color, BaseChartDirective, PluginServiceGlobalRegistrationAndOptions } from 'ng2-charts';
 
 
 @Component({
   templateUrl: 'widgets.component.html'
 })
 export class WidgetsComponent {
+
+  @ViewChildren( BaseChartDirective ) charts: QueryList<BaseChartDirective>
+
+  public currentDistractor: any = 'Distractor';
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -389,4 +396,191 @@ export class WidgetsComponent {
   ];
   public lineChart5Legend = false;
   public lineChart5Type = 'line';
+
+  //Bubble chart
+  public featuresNames = ['Percentage of appearence in texts (PAT)', 
+  'Is capitalize (IC)','Count capitals (CC)',
+  'Has digits (HD)','Longest substring (LS)','Context similarity (CS)'].reverse();
+
+  public shortfeaturesNames = ['PAT','IC','CC','HD','LS','CS'].reverse();
+
+  public bubbleChartOptions2: ChartOptions = {
+    legend: {
+      display: false,
+    },
+    title: {
+      text: '',
+      display: true
+    },
+    responsive: true,
+    tooltips: {
+      enabled: true,
+      callbacks: {
+       label: function (tooltipItem, data) {
+
+        let label = data.labels[tooltipItem.index];
+        /* let value = data.datasets[0].data[tooltipItem.index]['x'] 
+        let points = data.datasets[0].data[tooltipItem.index]['y'] */
+        return " "+label;
+       },
+       footer: (tooltipItems, data) => {
+         let points = tooltipItems[0].xLabel
+         let idxFeature = tooltipItems[0].yLabel
+         let featureShortName = this.shortfeaturesNames[idxFeature]
+         return [featureShortName+':  '+points+' points'];
+        }
+      },
+    },
+    scales: {
+      xAxes: [
+        { 
+          ticks: { 
+            min: -100, 
+            max: 100, 
+          },
+          scaleLabel: {
+              display: true,
+              labelString: 'SHAP value (impact on model output)'
+          }
+        }
+      ],
+      yAxes: [
+        { 
+          ticks: { 
+            min: 0, max: 5,
+            callback: value => this.featuresNames[value]
+          },
+       }
+      ],
+    },
+    
+  };
+
+  public distractors =  [
+    'Brugge', 'Paris', 'Barcelona', 
+    'Lille' , 'Anvers', 'NYC', 'London'];
+
+  public bubbleChartLabels2: Label[] = this.distractors.concat(this.distractors,
+    this.distractors,
+    this.distractors,
+    this.distractors,
+    this.distractors);
+
+  public bubbleChartData2: ChartDataSets[] = [
+    {
+      data:[
+        { x: 92, y: 5, r: 8 },
+        { x: 70, y: 5, r: 8 },
+        { x: 45, y: 5, r: 8 },
+        { x: 10, y: 5, r: 8 },
+        { x: -10, y: 5, r: 8 },
+        { x: -32, y: 5, r: 8 },
+        { x: -45, y: 5, r: 8 },
+
+        { x: 55, y: 4, r: 8 },
+        { x: 75, y: 4, r: 8 },
+        { x: 30, y: 4, r: 8 },
+        { x: -3, y: 4, r: 8 },
+        { x: 10, y: 4, r: 8 },
+        { x: -5, y: 4, r: 8 },
+        { x: -55, y: 4, r: 8 },
+
+        { x: 60, y: 3, r: 8 },
+        { x: 10, y: 3, r: 8 },
+        { x: 10, y: 3, r: 8 },
+        { x: 10, y: 3, r: 8 },
+        { x: 0, y: 3, r: 8 },
+        { x: 0, y: 3, r: 8 },
+        { x: -23, y: 3, r: 8 },
+
+        { x: 0, y: 2, r: 8 },
+        { x: 0, y: 2, r: 8 },
+        { x: 0, y: 2, r: 8 },
+        { x: 0, y: 2, r: 8 },
+        { x: 0, y: 2, r: 8 },
+        { x: 0, y: 2, r: 8 },
+        { x: 0, y: 2, r: 8 },
+
+        { x: 60, y: 1, r: 8 },
+        { x: 0, y: 1, r: 8 },
+        { x: 10, y: 1, r: 8 },
+        { x: 0, y: 1, r: 8 },
+        { x: 0, y: 1, r: 8 },
+        { x: 0, y: 1, r: 8 },
+        { x: 0, y: 1, r: 8 },
+
+        { x: -30, y: 0, r: 8 },
+        { x: 40, y: 0, r: 8 },
+        { x: -10, y: 0, r: 8 },
+        { x: 60, y: 0, r: 8 },
+        { x: 75, y: 0, r: 8 },
+        { x: 88, y: 0, r: 8 },
+        { x: 92, y: 0, r: 8 },
+      ],
+       backgroundColor: function(context) {
+        var index = context.dataIndex;
+        var value = context.dataset.data[index]['x'];
+        
+        return value < 0 ? '#F86C6B' : value < 75 ? '#FFC107' : '#4DBD74';
+      },
+      /*pointHoverBackgroundColor: function(context) {
+        var index = context.dataIndex;
+        var value = context.dataset.data[index]['y'];
+        
+        return value < 0 ? '#F86C6B' : value < 75 ? '#FFC107' : '#4DBD74';
+      },
+      pointHoverBorderColor: function(context) {
+        var index = context.dataIndex;
+        var value = context.dataset.data[index]['y'];
+        
+        return value < 0 ? '#F86C6B' : value < 75 ? '#FFC107' : '#4DBD74';
+      },
+      pointBackgroundColor: function(context) {
+        var index = context.dataIndex;
+        var value = context.dataset.data[index]['y'];
+        
+        return value < 0 ? '#F86C6B' : value < 75 ? '#FFC107' : '#4DBD74';
+      }, */
+      label: 'Series A',
+      pointRadius: 5,
+    },
+  ];
+  public bubbleChartType2: ChartType = 'bubble';
+
+  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+    if(active.length > 0) {
+      let indexPoint = active[0]['_index']
+
+      let selectedDistractor = this.bubbleChartLabels2[indexPoint]
+      let getAllIndexes = (arr, val) => {
+          var indexes = [], i = -1;
+          while ((i = arr.indexOf(val, i+1)) != -1){
+              indexes.push(i);
+          }
+          return indexes;
+      }
+      let indexes = getAllIndexes(this.bubbleChartLabels2, selectedDistractor);
+      
+      
+      
+      let minRadio = 8;
+      let maxRadio = 15;
+
+      this.bubbleChartData2[0].data = [...this.bubbleChartData2[0].data].map( (point, index) => {
+        return {'x':point['x'], 'y':point['y'], 'r':indexes.includes(index)?maxRadio:minRadio}
+      })
+
+      this.bubbleChartData2[0].backgroundColor = [...this.bubbleChartData2[0].data].map( (point, index) => {
+        let value = this.bubbleChartData2[0].data[index]['x'];
+        let color = value < 0 ? '#F86C6B' : value < 75 ? '#FFC107' : '#4DBD74'
+        return indexes.includes(index)?color:'#E4E5E6';
+      })
+
+      this.currentDistractor = this.bubbleChartLabels2[indexPoint];
+    } 
+
+  }
+
+  
+
 }

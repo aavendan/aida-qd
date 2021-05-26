@@ -15,10 +15,10 @@ export const navItems: INavData[] = [
   {
     name: 'Features',
     icon: 'icon-book-open',
-    badge: {
+    /* badge: {
       variant: 'success',
       text: 'OPEN'
-    }, 
+    },  */
     children: [
       {
         name: 'List',
@@ -35,10 +35,10 @@ export const navItems: INavData[] = [
   {
     name: 'Points',
     icon: 'icon-grid',
-    badge: {
+    /* badge: {
       variant: 'success',
       text: 'OPEN'
-    }, 
+    }, */ 
     children: [
       {
         name: 'SHAP',
