@@ -7,13 +7,15 @@ import { Label, Color, BaseChartDirective, PluginServiceGlobalRegistrationAndOpt
 
 
 @Component({
-  templateUrl: 'widgets.component.html'
+  templateUrl: 'widgets.component.html',
+  styleUrls: ['widgets.component.css']
 })
 export class WidgetsComponent {
 
   @ViewChildren( BaseChartDirective ) charts: QueryList<BaseChartDirective>
 
   public currentDistractor: any = 'Distractor';
+  public currentDistractorValues: Array<any> = [];
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -415,6 +417,7 @@ export class WidgetsComponent {
     responsive: true,
     tooltips: {
       enabled: true,
+      intersect: false,
       callbacks: {
        label: function (tooltipItem, data) {
 
@@ -552,6 +555,8 @@ export class WidgetsComponent {
       let indexPoint = active[0]['_index']
 
       let selectedDistractor = this.bubbleChartLabels2[indexPoint]
+      
+
       let getAllIndexes = (arr, val) => {
           var indexes = [], i = -1;
           while ((i = arr.indexOf(val, i+1)) != -1){
@@ -560,8 +565,6 @@ export class WidgetsComponent {
           return indexes;
       }
       let indexes = getAllIndexes(this.bubbleChartLabels2, selectedDistractor);
-      
-      
       
       let minRadio = 8;
       let maxRadio = 15;
@@ -576,7 +579,13 @@ export class WidgetsComponent {
         return indexes.includes(index)?color:'#E4E5E6';
       })
 
+      //Distractor name
       this.currentDistractor = this.bubbleChartLabels2[indexPoint];
+
+      //Features' distractor values
+      this.currentDistractorValues = this.bubbleChartData2[0].data.filter( 
+        (currentValue, index) => indexes.includes(index)).reverse();
+      
     } 
 
   }

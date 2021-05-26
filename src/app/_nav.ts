@@ -33,7 +33,7 @@ export const navItems: INavData[] = [
     ]
   },
   {
-    name: 'Points',
+    name: 'Explanations',
     icon: 'icon-grid',
     /* badge: {
       variant: 'success',
@@ -42,12 +42,13 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'SHAP',
-        url: '/widgets',
+        url: '/explanations/shap',
+        /* url: '/widgets', */
         icon: 'icon-target'
       },
       {
         name: 'AIDA',
-        url: '/points/list',
+        url: '/explanations/aida',
         icon: 'icon-graph',
       }
     ]

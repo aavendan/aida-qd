@@ -19,7 +19,7 @@ const routes: Routes = [
           {
             path: '',
             data: {
-              title: 'Points'
+              title: 'Explanations'
             },
             children: [
               {

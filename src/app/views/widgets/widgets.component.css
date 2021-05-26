@@ -1,0 +1,8 @@
+.table .thead-light th {
+    background-color: #20a8d8;
+    color: #fcfeff;
+}
+
+.delay {
+    transition-duration: .75s;
+}

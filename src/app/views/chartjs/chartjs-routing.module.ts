@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ChartJSComponent } from './chartjs.component';
+import { WidgetsComponent } from './../widgets/widgets.component';
 
 /* const routes: Routes = [
   {
@@ -29,18 +30,25 @@ const routes: Routes = [
           {
             path: '',
             data: {
-              title: 'Points'
+              title: 'Explanations'
             },
             children: [
               {
                 path: '',
-                redirectTo: 'list'
+                redirectTo: 'aida'
               },
               {
-                path: 'list',
+                path: 'aida',
                 component: ChartJSComponent,
                 data: {
                   title: 'AIDA'
+                }
+              },
+              {
+                path: 'shap',
+                component: WidgetsComponent,
+                data: {
+                  title: 'SHAP'
                 }
               }
             ]
