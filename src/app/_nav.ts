@@ -41,6 +41,11 @@ export const navItems: INavData[] = [
     }, 
     children: [
       {
+        name: 'SHAP',
+        url: '/widgets',
+        icon: 'icon-target'
+      },
+      {
         name: 'AIDA',
         url: '/points/list',
         icon: 'icon-graph',
