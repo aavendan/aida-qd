@@ -34,32 +34,39 @@ const routes: Routes = [
     },
     children: [
       {
-        path: '',
+        path:'',
         data: {
           title: 'Distractor'
         },
         children: [
           {
             path: '',
-            redirectTo: 'list'
-          },
-          {
-            path: 'list',
-            component: DashboardComponent,
             data: {
               title: 'Features'
-            }
-          },
-          {
-            path: 'comparison',
-            component: TypographyComponent,
-            data: {
-              title: 'Comparison'
-            }
-          },
+            },
+            children: [
+              {
+                path: '',
+                redirectTo: 'list'
+              },
+              {
+                path: 'list',
+                component: DashboardComponent,
+                data: {
+                  title: 'List'
+                }
+              },
+              {
+                path: 'comparison',
+                component: TypographyComponent,
+                data: {
+                  title: 'Comparison'
+                }
+              },
+            ]
+          }
         ]
       }
-     
     ]
   }
 ];

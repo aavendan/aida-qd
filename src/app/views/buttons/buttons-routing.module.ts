@@ -23,7 +23,7 @@ const routes: Routes = [
           title: ''
         }
       },
-      {
+     /*  {
         path: 'dropdowns',
         component: DropdownsComponent,
         data: {
@@ -36,7 +36,7 @@ const routes: Routes = [
         data: {
           title: 'Brand buttons'
         }
-      }
+      } */
     ]
   }
 ];

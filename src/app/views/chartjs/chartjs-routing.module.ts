@@ -28,14 +28,22 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            redirectTo: 'list'
-          },
-          {
-            path: 'list',
-            component: ChartJSComponent,
             data: {
               title: 'Points'
-            }
+            },
+            children: [
+              {
+                path: '',
+                redirectTo: 'list'
+              },
+              {
+                path: 'list',
+                component: ChartJSComponent,
+                data: {
+                  title: 'AIDA'
+                }
+              }
+            ]
           }
         ]
       }
