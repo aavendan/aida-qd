@@ -34,7 +34,7 @@
             <tbody>
               <tr *ngFor ="let sfN of shortfeaturesNames;let indexOfelement=index;">
                 <th>{{shortfeaturesNames[shortfeaturesNames.length-1-indexOfelement]}}</th>
-                <td>
+                <td [ngClass]="getClass(currentDistractorValues[shortfeaturesNames.length-1-indexOfelement])" >
                   <div class="text-center">
                     <span *ngIf="currentDistractorValues.length==0; else elseBlock">0</span>
                     <ng-template #elseBlock>{{currentDistractorValues[shortfeaturesNames.length-1-indexOfelement].x}}</ng-template>
@@ -47,6 +47,24 @@
       </div>
     </div>
   </div>
+  <!-- <div class="row"> 
+    <div class="col-5">
+      <div class="card">
+        <div class="card-header">
+          <strong>SHAP values features of {{currentDistractor}}</strong>
+        </div>
+        <div class="card-body">
+          <canvas baseChart class="chart"
+            [datasets]="barChartData"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            [plugins]="waterFallPlugin"
+            ></canvas>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </div>
 <!-- <div class="animated fadeIn">
   <div class="row">

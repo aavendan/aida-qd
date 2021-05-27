@@ -6,3 +6,15 @@
 .delay {
     transition-duration: .75s;
 }
+
+td.up-value {
+    background-color: #4DBD74;
+}
+
+td.mid-value {
+    background-color: #ffc107;
+}
+
+td.down-value {
+    background-color: #F86C6B;
+}

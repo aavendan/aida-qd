@@ -2,9 +2,28 @@ import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { getStyle } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 
-import { ChartDataSets, ChartType, ChartOptions } from 'chart.js';
+import { pluginService, ChartDataSets, ChartType, ChartOptions } from 'chart.js';
 import { Label, Color, BaseChartDirective, PluginServiceGlobalRegistrationAndOptions } from 'ng2-charts';
 
+import {waterFallPlugin} from 'chartjs-plugin-waterfall';
+
+//https://stackblitz.com/edit/scattered-chart?file=src%2Fapp%2Fapp.component.ts
+function setupPlugin() {
+  console.log(pluginService)
+  pluginService.register({
+      id: 'ScatterGraphYaxis',
+      afterDatasetDraw: (chart, args, options) => {
+
+        
+        let ctx = chart.ctx;
+        ctx.beginPath();       // Start a new path
+        ctx.moveTo(30, 50);    // Move the pen to (30, 50)
+        ctx.lineTo(150, 100);  // Draw a line to (150, 100)
+        ctx.stroke();   
+
+      }
+    });
+}
 
 @Component({
   templateUrl: 'widgets.component.html',
@@ -16,6 +35,10 @@ export class WidgetsComponent {
 
   public currentDistractor: any = 'Distractor';
   public currentDistractorValues: Array<any> = [];
+
+  /* constructor() {
+    setupPlugin()
+   } */
 
   // lineChart1
   public lineChart1Data: Array<any> = [
@@ -399,6 +422,71 @@ export class WidgetsComponent {
   public lineChart5Legend = false;
   public lineChart5Type = 'line';
 
+  //mybarchar
+  //https://gist.github.com/EdwinChua/0a5d66dc561fe7d3866021b18a320585
+  //https://github.com/everestate/chartjs-plugin-waterfall
+  public barChartOptions: any = {
+    scaleShowVerticalLines: false,
+    responsive: true,
+    tooltips: {
+      enabled: false
+    }
+  };
+  public barChartLabels: string[] = ['Brugge', 'Paris', 'Barcelona', 'Lille', 'Anvers', 'NYC', 'London'];
+  public barChartType = 'horizontalBar';
+  public barChartLegend = false;
+  public chartColors: any[] = [
+    { 
+      backgroundColor:["#4DBD74", "#4DBD74", "#4DBD74", "#FFC107", "#FFC107", "#F86C6B","#F86C6B"] 
+    }];
+  public barChartData: any[] = [
+    {
+      label: 'PAT',
+      data: [92],
+      backgroundColor: '#4DBD74',
+      stack: 'pat',
+    },
+    /* {
+      data: [92],
+      waterfall: {
+        dummyStack: true,
+      },
+      backgroundColor: 'transparent',
+      stack: 'stack 1',
+    },
+    {
+      label: 'Closing Costs',
+      data: [50],
+      backgroundColor: '#e8cdd7',
+      stack: 'stack 1',
+    },
+    {
+      label: 'Purchase Price',
+      data: [700],
+      backgroundColor: '#d29baf',
+      stack: 'stack 1',
+    }, */
+    /* {
+      data: [200],
+      waterfall: {
+        dummyStack: true,
+      },
+      stack: 'stack 2',
+    },
+    {
+      label: 'Opening Loan Balance',
+      data: [550],
+      backgroundColor: '#bb6987',
+      stack: 'stack 2',
+    },
+    {
+      label: 'Initial Cash Investment',
+      data: [200],
+      backgroundColor: '#a53860',
+      stack: 'stack 3',
+    }, */
+  ];
+
   //Bubble chart
   public featuresNames = ['Percentage of appearence in texts (PAT)', 
   'Is capitalize (IC)','Count capitals (CC)',
@@ -415,9 +503,13 @@ export class WidgetsComponent {
       display: true
     },
     responsive: true,
+    plugins: {
+      ScatterGraphYaxis: {
+      }
+    },
     tooltips: {
       enabled: true,
-      intersect: false,
+      /* intersect: false, */
       callbacks: {
        label: function (tooltipItem, data) {
 
@@ -566,8 +658,8 @@ export class WidgetsComponent {
       }
       let indexes = getAllIndexes(this.bubbleChartLabels2, selectedDistractor);
       
-      let minRadio = 8;
-      let maxRadio = 15;
+      let minRadio = 5;
+      let maxRadio = 10;
 
       this.bubbleChartData2[0].data = [...this.bubbleChartData2[0].data].map( (point, index) => {
         return {'x':point['x'], 'y':point['y'], 'r':indexes.includes(index)?maxRadio:minRadio}
@@ -586,10 +678,29 @@ export class WidgetsComponent {
       this.currentDistractorValues = this.bubbleChartData2[0].data.filter( 
         (currentValue, index) => indexes.includes(index)).reverse();
       
+      /* console.log(this.charts.get(0).chart.ctx)
+      this.charts.get(0).chart.ctx.beginPath();
+      this.charts.get(0).chart.ctx.moveTo(0, 0);
+      this.charts.get(0).chart.ctx.lineTo(300, 150);
+      this.charts.get(0).chart.ctx.stroke();
+      this.charts.get(0).chart.update(); */
+
     } 
 
   }
 
-  
+  getClass(value) {
+
+    if(!value)
+    return '';
+
+    let classTd = 'mid-value';
+    if(value.x >= 75) {
+      classTd = 'up-value'
+    } else if (value.x < 0) {
+      classTd = 'down-value'
+    }
+    return  classTd;
+  }
 
 }

@@ -13,12 +13,11 @@ export const navItems: INavData[] = [
     icon: 'icon-directions',
   },
   {
+    divider: true
+  },
+  {
     name: 'Features',
     icon: 'icon-book-open',
-    /* badge: {
-      variant: 'success',
-      text: 'OPEN'
-    },  */
     children: [
       {
         name: 'List',
@@ -33,17 +32,15 @@ export const navItems: INavData[] = [
     ]
   },
   {
+    divider: true
+  },
+  {
     name: 'Explanations',
     icon: 'icon-grid',
-    /* badge: {
-      variant: 'success',
-      text: 'OPEN'
-    }, */ 
     children: [
       {
         name: 'SHAP',
         url: '/explanations/shap',
-        /* url: '/widgets', */
         icon: 'icon-target'
       },
       {
