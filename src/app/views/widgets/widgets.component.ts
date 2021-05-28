@@ -626,24 +626,6 @@ export class WidgetsComponent {
         
         return value < 0 ? '#F86C6B' : value < 75 ? '#FFC107' : '#4DBD74';
       },
-      /*pointHoverBackgroundColor: function(context) {
-        var index = context.dataIndex;
-        var value = context.dataset.data[index]['y'];
-        
-        return value < 0 ? '#F86C6B' : value < 75 ? '#FFC107' : '#4DBD74';
-      },
-      pointHoverBorderColor: function(context) {
-        var index = context.dataIndex;
-        var value = context.dataset.data[index]['y'];
-        
-        return value < 0 ? '#F86C6B' : value < 75 ? '#FFC107' : '#4DBD74';
-      },
-      pointBackgroundColor: function(context) {
-        var index = context.dataIndex;
-        var value = context.dataset.data[index]['y'];
-        
-        return value < 0 ? '#F86C6B' : value < 75 ? '#FFC107' : '#4DBD74';
-      }, */
       label: 'Series A',
       pointRadius: 5,
     },
