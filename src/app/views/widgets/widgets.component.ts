@@ -429,7 +429,7 @@ export class WidgetsComponent {
     tooltips: {enabled: false},
     hover: {mode: null}
   };
-  public barChartPlugins = [waterFallPlugin]
+  public barChartPlugins = waterFallPlugin;
   public barChartType = 'horizontalBar';
   public barChartLegend = false;
   public barChartData: any[] = [
