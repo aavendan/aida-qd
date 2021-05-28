@@ -426,65 +426,73 @@ export class WidgetsComponent {
   //https://gist.github.com/EdwinChua/0a5d66dc561fe7d3866021b18a320585
   //https://github.com/everestate/chartjs-plugin-waterfall
   public barChartOptions: any = {
-    scaleShowVerticalLines: false,
-    responsive: true,
-    tooltips: {
-      enabled: false
-    }
+    tooltips: {enabled: false},
+    hover: {mode: null}
   };
-  public barChartLabels: string[] = ['Brugge', 'Paris', 'Barcelona', 'Lille', 'Anvers', 'NYC', 'London'];
+  public barChartPlugins = [waterFallPlugin]
   public barChartType = 'horizontalBar';
   public barChartLegend = false;
-  public chartColors: any[] = [
-    { 
-      backgroundColor:["#4DBD74", "#4DBD74", "#4DBD74", "#FFC107", "#FFC107", "#F86C6B","#F86C6B"] 
-    }];
   public barChartData: any[] = [
     {
-      label: 'PAT',
-      data: [92],
-      backgroundColor: '#4DBD74',
-      stack: 'pat',
-    },
-    /* {
-      data: [92],
+      data: [-10],
       waterfall: {
         dummyStack: true,
       },
       backgroundColor: 'transparent',
       stack: 'stack 1',
+      display: false
     },
     {
-      label: 'Closing Costs',
-      data: [50],
-      backgroundColor: '#e8cdd7',
+      label: 'PAT',
+      data: [-30],
+      backgroundColor: '#4DBD74',
       stack: 'stack 1',
+      display: true
     },
     {
-      label: 'Purchase Price',
-      data: [700],
-      backgroundColor: '#d29baf',
-      stack: 'stack 1',
-    }, */
-    /* {
-      data: [200],
+      label: 'IC',
+      data: [-40],
+      backgroundColor: '#FFC107',
+      stack: 'stack 2',
+      display: true
+    },
+    {
+      label: 'CC',
+      data: [18],
+      backgroundColor: '#FFC107',
+      stack: 'stack 3',
+      display: true
+    },
+    {
+      label: 'HD',
+      data: [-14],
+      backgroundColor: '#4DBD74',
+      stack: 'stack 4',
+      display: false
+    },
+    {
+      label: 'HD',
+      data: [18],
+      backgroundColor: '#4DBD74',
+      stack: 'stack 4',
+      display: true
+    },
+    {
+      data: [-14],
       waterfall: {
         dummyStack: true,
       },
-      stack: 'stack 2',
+      backgroundColor: 'transparent',
+      stack: 'stack 5',
+      display: false
     },
     {
-      label: 'Opening Loan Balance',
-      data: [550],
-      backgroundColor: '#bb6987',
-      stack: 'stack 2',
+      label: 'LS',
+      data: [-6],
+      backgroundColor: '#FFC107',
+      stack: 'stack 5',
+      display: true
     },
-    {
-      label: 'Initial Cash Investment',
-      data: [200],
-      backgroundColor: '#a53860',
-      stack: 'stack 3',
-    }, */
   ];
 
   //Bubble chart
@@ -702,5 +710,7 @@ export class WidgetsComponent {
     }
     return  classTd;
   }
+
+  
 
 }
