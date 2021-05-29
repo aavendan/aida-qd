@@ -64,6 +64,10 @@ export class ColorsComponent implements OnInit {
     const formData = new FormData();
     formData.append('url', this.question);
 
+    this.ddanger = 0;
+    this.dsuccess = 0;
+    this.dwarning = 0;
+
     fetch(this.SERVER_URL, {
       method: 'POST',
       body: formData,
