@@ -80,6 +80,24 @@
         </div>
       </div>
     </div>
+    <div class="col-6">
+      <div class="card">
+        <div class="card-header">
+          <strong>SHAP values features forces of {{currentDistractor}}</strong>
+        </div>
+        <div class="card-body">
+          <canvas baseChart 
+          #force
+          [datasets]="barChartDataForce" 
+          [labels]="barChartLabelsForce" 
+          [options]="barChartOptionsForce"
+          [legend]="barChartLegendForce" 
+          [chartType]="barChartTypeForce"
+          [colors]="barcChartColorsForce"
+          [plugins]="barChartPluginsForce"></canvas>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <!-- <div class="animated fadeIn">

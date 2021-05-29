@@ -474,7 +474,7 @@ export class WidgetsComponent {
   public barChartLegend = false;
   public barChartData: any[] = [];
 
-  //mynewbarchar
+  //barSHAP
   getColor(context) {
     var index = context.dataIndex;
     var value = context.dataset.data[index];
@@ -553,6 +553,51 @@ export class WidgetsComponent {
       backgroundColor: context => this.getColor(context)
     }
   ];
+
+  //forceSHAP
+  public barChartOptionsForce: ChartOptions = {
+    responsive: true,
+    tooltips: {
+      enabled: true
+    }
+  };
+  public barcChartColorsForce: Array<any> = []/* [
+    { backgroundColor:"#4DBD74", borderWidth: "0.5", borderColor: "#000000" },
+    { backgroundColor:"#f72c2c", borderWidth: "0.5", borderColor: "#000000" },
+    { backgroundColor:"#a57d03", borderWidth: "0.5", borderColor: "#000000" },
+    { backgroundColor:"#F86C6B", borderWidth: "0.5", borderColor: "#000000" },
+    { backgroundColor:"#d19d04", borderWidth: "0.5", borderColor: "#000000" },
+    { backgroundColor:"#FFC107", borderWidth: "0.5", borderColor: "#000000" }
+  ]; */
+  public barChartPluginsForce = [{
+    afterDraw(chart, easing) {
+      
+    },
+    beforeDraw(chart, easing) {
+      const ctx = chart.ctx;
+      
+      /* const chartArea = chart.chartArea;
+      const top = chartArea.top; // Use a value of 0 here to include the legend
+
+      ctx.save();
+      ctx.fillStyle = 'red';
+
+      ctx.fillRect(chartArea.left, top, chartArea.right - chartArea.left, chartArea.bottom - top);
+      ctx.restore(); */
+    }
+  }];
+  public barChartTypeForce: ChartType = 'horizontalBar';
+  public barChartLegendForce = false;
+
+  public barChartDataForce: ChartDataSets[] = [];/*  [
+    { data: [92], label: 'IC', stack: 'a' },
+    { data: [-30], label: 'CS', stack: 'a' },
+    { data: [10], label: 'PAT', stack: 'a' },
+    { data: [-10], label: 'HD', stack: 'a' },
+    { data: [10], label: 'CS', stack: 'a' },
+    { data: [8], label: 'LS', stack: 'a' }
+  ]; */
+  public barChartLabelsForce: string[] = ['Shap Forces'];
 
   //Bubble chart
   public featuresNames = [...['Percentage of appearence in texts (PAT)', 
@@ -739,14 +784,47 @@ export class WidgetsComponent {
 
       //this.tryForce(indexPoint,indexes, data);
       
+      this.showWaterfall();
       this.showForce();
-      
 
     } 
 
   }
 
+  getColor2(value) {
+    if(value < 0)
+      return '#F86C6B';
+    if(value >=0 && value < 75)
+      return '#FFC107';
+    return '#4DBD74';
+  }
+
   showForce() {
+    console.log("Force")
+    let arrX = [...this.currentDistractorValues].map( (element) => element.x)
+    let sortedArr = [...arrX].sort((a,b) => (a > b) ? 1 : a < b ? -1 : -1 ).reverse()
+    let fN = [...this.shortfeaturesNames]
+    let colors = [...sortedArr].map((element) => this.getColor2(element));
+
+    
+    console.clear();
+    console.log(sortedArr)
+    console.log(colors)
+
+    this.barChartDataForce = [];
+    this.barcChartColorsForce = [];
+
+    sortedArr.forEach((element,idxEl) => {
+
+      let idx = arrX.indexOf(element);
+      console.log(idx,fN[idx],element,this.getColor2(element))
+
+      this.barChartDataForce.push({ data: [element], label: fN[idx], stack: 'a' })
+      this.barcChartColorsForce.push({ backgroundColor:this.getColor2(element), borderWidth: "0.5", borderColor: "#000000" })
+    });
+  }  
+
+  showWaterfall() {
 
     this.barChartData = [];
     this.barChartData.push(
