@@ -2,13 +2,13 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   
-  {
+  /* {
     name: 'Questions',
     url: '/questions',
     icon: 'icon-notebook'
-  },
+  }, */
   {
-    name: 'Distractors',
+    name: 'Generator',
     url: '/distractors',
     icon: 'icon-directions',
   },

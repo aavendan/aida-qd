@@ -12,12 +12,15 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 
 import { ChartsModule } from 'ng2-charts';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   imports: [
     CommonModule,
     ThemeRoutingModule,
     DragDropModule,
-    ChartsModule
+    ChartsModule,
+    HttpClientModule,
   ],
   declarations: [
     ColorsComponent,

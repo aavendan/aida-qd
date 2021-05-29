@@ -28,43 +28,35 @@ import { TypographyComponent } from './../theme/typography.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path:'',
     data: {
-      title: 'Question'
+      title: 'Distractor'
     },
     children: [
       {
-        path:'',
+        path: '',
         data: {
-          title: 'Distractor'
+          title: 'Features'
         },
         children: [
           {
             path: '',
+            redirectTo: 'list'
+          },
+          {
+            path: 'list',
+            component: DashboardComponent,
             data: {
-              title: 'Features'
-            },
-            children: [
-              {
-                path: '',
-                redirectTo: 'list'
-              },
-              {
-                path: 'list',
-                component: DashboardComponent,
-                data: {
-                  title: 'List'
-                }
-              },
-              {
-                path: 'comparison',
-                component: TypographyComponent,
-                data: {
-                  title: 'Comparison'
-                }
-              },
-            ]
-          }
+              title: 'List'
+            }
+          },
+          {
+            path: 'comparison',
+            component: TypographyComponent,
+            data: {
+              title: 'Comparison'
+            }
+          },
         ]
       }
     ]

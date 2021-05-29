@@ -505,7 +505,13 @@ export class WidgetsComponent {
         } 
       }],
       yAxes: [{
-        display: true
+        display: true,
+        /* ticks: {
+          autoSkip: false,
+          maxRotation: 90,
+          minRotation: 90,
+          padding: -110
+        } */
       }]
     },
   };
@@ -532,7 +538,7 @@ export class WidgetsComponent {
       data: [0, 0, 0, 0, 0, 0],
       label: 'Series B',
       stack: 'a',
-      backgroundColor: 'transparent'
+      backgroundColor: 'black'
     },
     {
       data: [0, 0, 17, 17, 18, 10],
@@ -541,7 +547,7 @@ export class WidgetsComponent {
       backgroundColor: 'transparent'
     },
     {
-      data: [69, 7, 10, 10, 9, 8],
+      data: [69, 17, 10, 10, 9, 8],
       label: 'Series C',
       stack: 'a',
       backgroundColor: context => this.getColor(context)

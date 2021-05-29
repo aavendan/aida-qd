@@ -18,44 +18,35 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Question'
+      title: 'Distractor'
     },
     children: [
       {
         path: '',
         data: {
-          title: 'Distractor'
+          title: 'Explanations'
         },
         children: [
           {
             path: '',
+            redirectTo: 'aida'
+          },
+          {
+            path: 'aida',
+            component: ChartJSComponent,
             data: {
-              title: 'Explanations'
-            },
-            children: [
-              {
-                path: '',
-                redirectTo: 'aida'
-              },
-              {
-                path: 'aida',
-                component: ChartJSComponent,
-                data: {
-                  title: 'AIDA'
-                }
-              },
-              {
-                path: 'shap',
-                component: WidgetsComponent,
-                data: {
-                  title: 'SHAP'
-                }
-              }
-            ]
+              title: 'AIDA'
+            }
+          },
+          {
+            path: 'shap',
+            component: WidgetsComponent,
+            data: {
+              title: 'SHAP'
+            }
           }
         ]
       }
-     
     ]
   }
 ];

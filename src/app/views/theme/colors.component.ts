@@ -1,7 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild,ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { getStyle, rgbToHex } from '@coreui/coreui/dist/js/coreui-utilities';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   templateUrl: 'colors.component.html',
@@ -9,13 +10,19 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class ColorsComponent implements OnInit {
 
-  question: string = 'What is the capital Belgium?'
+  @ViewChild('question') questionRef:ElementRef;
+  @ViewChild('answer') answerRef:ElementRef;
 
-  distractors = [
-    {'text':'Brussels', 'type':'Answer', 'class':'text-info'}
-  ];
 
-  constructor(@Inject(DOCUMENT) private _document: any) {}
+  SERVER_URL: string = "https://damp-beach-17296.herokuapp.com/http://193.190.127.206:5010/"
+  question: string = ''
+  result: Array<any> = [];
+  distractors: Array<any> = [];
+  dsuccess = 0; dwarning = 0; ddanger = 0;
+
+  constructor(@Inject(DOCUMENT) private _document: any, private httpClient: HttpClient) {
+    
+  }
 
   public themeColors(): void {
     Array.from(this._document.querySelectorAll('.theme-color')).forEach((el: HTMLElement) => {
@@ -38,7 +45,54 @@ export class ColorsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.themeColors();
+    /* this.themeColors(); */
+
+    
+
+  }
+
+  generate() {
+
+    this.question = this.questionRef.nativeElement.value;
+
+    let answer = this.answerRef.nativeElement.value;
+    this.distractors = [];
+    this.distractors.push({'text':answer, 'type':'Answer', 'class':'text-info'})
+    
+
+    this.result = [];
+    const formData = new FormData();
+    formData.append('url', this.question);
+
+    fetch(this.SERVER_URL, {
+      method: 'POST',
+      body: formData,
+    })
+    .then((response) => response.text())
+    .then(txt => {
+      var parser = new DOMParser();
+      var htmlDoc = parser.parseFromString(txt, 'text/html');
+      var results = htmlDoc.getElementsByTagName('tr')
+
+      for (let index = 1; index < results.length; index++) {
+        let element = results[index];
+        let value = Math.round(parseFloat(element.getElementsByTagName('td')[1].textContent)*100);
+
+        this.dsuccess += value>=75?1:0;
+        this.dwarning += value<75 && value >= 30?1:0;
+        this.ddanger += value<30?1:0;
+
+        this.result.push({
+          'name': element.getElementsByTagName('td')[0].textContent,
+          'value': value
+        })
+      }
+
+
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
   }
 
   enabling(values:any): boolean {
@@ -54,8 +108,10 @@ export class ColorsComponent implements OnInit {
     
   }
 
-  addDistractor(values:any, classValue: any):void {
-    let distractor = values.currentTarget.value;
+  addDistractor(values:any):void {
+    let distractor = values.currentTarget.name;
+    let valueDistractor = values.currentTarget.value;
+    let classValue = valueDistractor>=75?'text-success':valueDistractor>=30?'text-warning':'text-danger';
     
     if(values.currentTarget.checked) {
       this.distractors.push({'text':distractor,'type':'Distractor', 'class':classValue})

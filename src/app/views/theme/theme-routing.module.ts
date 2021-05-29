@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Question'
+      title: 'Distractor'
     },
     children: [
       {
@@ -19,7 +19,7 @@ const routes: Routes = [
         path: 'list',
         component: ColorsComponent,
         data: {
-          title: 'Distractors'
+          title: 'Generator'
         }
       },
       
