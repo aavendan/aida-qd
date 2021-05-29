@@ -205,26 +205,48 @@ export class WidgetsComponent {
 
 
   // barChart1
+  // this
   public barChart1Data: Array<any> = [
     {
-      data: [78, 81, 80, 45, 34, 12, 40, 78, 81, 80, 45, 34, 12, 40, 12, 40],
-      label: 'Series A',
-      barPercentage: 0.6
-    }
+      data: [-5],
+      backgroundColor: 'rgb(255, 255, 255, 0)',
+      stack: 'PAT',
+      label: 'PAT'
+    },
+    {
+      data: [-20],
+      backgroundColor: 'rgb(255, 0, 0)',
+      stack: 'PAT',
+      label: 'PAT'
+    },
+     {
+      data: [0,10],
+      backgroundColor: 'rgb(255, 193, 7)',
+      stack: 'IC',
+      label: 'IC'
+    },
+    /*{
+      data: [-10],
+      backgroundColor: 'rgb(255, 193, 7)',
+      stack: 'CC',
+      label: 'CC'
+    } */
   ];
-  public barChart1Labels: Array<any> = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16'];
+  public barChart1Labels: Array<any> = ['PAT', 'IC', 'CC'];
   public barChart1Options: any = {
-    tooltips: {
+    /* tooltips: {
       enabled: false,
       custom: CustomTooltips
-    },
+    }, */
+    tooltips: {enabled: false},
+    hover: {mode: null},
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
-        display: false,
+        display: true,
       }],
       yAxes: [{
-        display: false
+        display: true
       }]
     },
     legend: {
@@ -233,12 +255,12 @@ export class WidgetsComponent {
   };
   public barChart1Colours: Array<any> = [
     {
-      backgroundColor: 'rgba(255,255,255,.3)',
-      borderWidth: 0
+      /* backgroundColor: 'rgb(32, 168, 216)', 
+      borderWidth: 1*/
     }
   ];
   public barChart1Legend = false;
-  public barChart1Type = 'bar';
+  public barChart1Type = 'horizontalBar';
 
   // lineChart4
   public lineChart4Data: Array<any> = [
@@ -427,80 +449,111 @@ export class WidgetsComponent {
   //https://github.com/everestate/chartjs-plugin-waterfall
   public barChartOptions: any = {
     tooltips: {enabled: false},
-    hover: {mode: null}
+    hover: {mode: null},
+    scales: {
+      xAxes: [{
+        display: true,
+        ticks: { 
+          min: -20, 
+          max: 100, 
+          steps: 5,
+          stepValue: 5,
+        },
+        scaleLabel: {
+            display: true,
+            labelString: 'E[f(x)] = 10'
+        } 
+      }],
+      yAxes: [{
+        display: true
+      }]
+    },
   };
   public barChartPlugins = waterFallPlugin;
   public barChartType = 'horizontalBar';
   public barChartLegend = false;
-  public barChartData: any[] = [
+  public barChartData: any[] = [];
+
+  //mynewbarchar
+  getColor(context) {
+    var index = context.dataIndex;
+    var value = context.dataset.data[index];
+
+    if (index == 0) return '#4DBD74';
+
+    if (index == 2 || index == 4 || index == 5) return '#FFC107';
+
+    if (index == 1 || index == 3) return '#F86C6B';
+  }
+
+  public barChartOptionsSHAP: ChartOptions = {
+    responsive: true,
+    tooltips: {
+      enabled: false
+    },
+    hover: { mode: null },
+    scales: {
+      xAxes: [{
+        display: true,
+        ticks: { 
+          min: -35, 
+          max: 100, 
+        },
+        scaleLabel: {
+            display: true,
+            labelString: 'E[f(x)] = 10'
+        } 
+      }],
+      yAxes: [{
+        display: true
+      }]
+    },
+  };
+  public barChartLabelsSHAP: Label[] = [
+    'IC (92)',
+    'CS (-30)',
+    'PAT (10)',
+    'HD (-10)',
+    'CC (9)',
+    'LS (8)'
+  ];
+  public barChartTypeSHAP: ChartType = 'horizontalBar';
+  public barChartLegendSHAP = false;
+  public barChartPluginsSHAP = [];
+
+  public barChartDataSHAP: ChartDataSets[] = [
     {
-      data: [-10],
-      waterfall: {
-        dummyStack: true,
-      },
-      backgroundColor: 'transparent',
-      stack: 'stack 1',
-      display: false
+      data: [ -23, -23, 0, 0, 0, 0],
+      label: 'Series A',
+      stack: 'a',
+      backgroundColor: context => this.getColor(context)
     },
     {
-      label: 'PAT',
-      data: [-30],
-      backgroundColor: '#4DBD74',
-      stack: 'stack 1',
-      display: true
+      data: [0, 0, 0, 0, 0, 0],
+      label: 'Series B',
+      stack: 'a',
+      backgroundColor: 'transparent'
     },
     {
-      label: 'IC',
-      data: [-40],
-      backgroundColor: '#FFC107',
-      stack: 'stack 2',
-      display: true
+      data: [0, 0, 17, 17, 18, 10],
+      label: 'Series C',
+      stack: 'a',
+      backgroundColor: 'transparent'
     },
     {
-      label: 'CC',
-      data: [18],
-      backgroundColor: '#FFC107',
-      stack: 'stack 3',
-      display: true
-    },
-    {
-      label: 'HD',
-      data: [-14],
-      backgroundColor: '#4DBD74',
-      stack: 'stack 4',
-      display: false
-    },
-    {
-      label: 'HD',
-      data: [18],
-      backgroundColor: '#4DBD74',
-      stack: 'stack 4',
-      display: true
-    },
-    {
-      data: [-14],
-      waterfall: {
-        dummyStack: true,
-      },
-      backgroundColor: 'transparent',
-      stack: 'stack 5',
-      display: false
-    },
-    {
-      label: 'LS',
-      data: [-6],
-      backgroundColor: '#FFC107',
-      stack: 'stack 5',
-      display: true
-    },
+      data: [69, 7, 10, 10, 9, 8],
+      label: 'Series C',
+      stack: 'a',
+      backgroundColor: context => this.getColor(context)
+    }
   ];
 
   //Bubble chart
-  public featuresNames = ['Percentage of appearence in texts (PAT)', 
+  public featuresNames = [...['Percentage of appearence in texts (PAT)', 
   'Is capitalize (IC)','Count capitals (CC)',
-  'Has digits (HD)','Longest substring (LS)','Context similarity (CS)'].reverse();
+  'Has digits (HD)','Longest substring (LS)','Context similarity (CS)']].reverse();
 
-  public shortfeaturesNames = ['PAT','IC','CC','HD','LS','CS'].reverse();
+  public shortfeaturesNames = [...['PAT','IC','CC','HD','LS','CS']].reverse();
 
   public bubbleChartOptions2: ChartOptions = {
     legend: {
@@ -572,7 +625,7 @@ export class WidgetsComponent {
   public bubbleChartData2: ChartDataSets[] = [
     {
       data:[
-        { x: 92, y: 5, r: 8 },
+        { x: 10, y: 5, r: 8 },
         { x: 70, y: 5, r: 8 },
         { x: 45, y: 5, r: 8 },
         { x: 10, y: 5, r: 8 },
@@ -580,7 +633,7 @@ export class WidgetsComponent {
         { x: -32, y: 5, r: 8 },
         { x: -45, y: 5, r: 8 },
 
-        { x: 55, y: 4, r: 8 },
+        { x: 92, y: 4, r: 8 },
         { x: 75, y: 4, r: 8 },
         { x: 30, y: 4, r: 8 },
         { x: -3, y: 4, r: 8 },
@@ -588,29 +641,29 @@ export class WidgetsComponent {
         { x: -5, y: 4, r: 8 },
         { x: -55, y: 4, r: 8 },
 
-        { x: 60, y: 3, r: 8 },
+        { x: 9, y: 3, r: 8 },
         { x: 10, y: 3, r: 8 },
         { x: 10, y: 3, r: 8 },
         { x: 10, y: 3, r: 8 },
-        { x: 0, y: 3, r: 8 },
-        { x: 0, y: 3, r: 8 },
+        { x: 1, y: 3, r: 8 },
+        { x: 1, y: 3, r: 8 },
         { x: -23, y: 3, r: 8 },
 
-        { x: 0, y: 2, r: 8 },
-        { x: 0, y: 2, r: 8 },
-        { x: 0, y: 2, r: 8 },
-        { x: 0, y: 2, r: 8 },
-        { x: 0, y: 2, r: 8 },
-        { x: 0, y: 2, r: 8 },
-        { x: 0, y: 2, r: 8 },
+        { x: -10, y: 2, r: 8 },
+        { x: 1, y: 2, r: 8 },
+        { x: 1, y: 2, r: 8 },
+        { x: 1, y: 2, r: 8 },
+        { x: 1, y: 2, r: 8 },
+        { x: 1, y: 2, r: 8 },
+        { x: 1, y: 2, r: 8 },
 
-        { x: 60, y: 1, r: 8 },
-        { x: 0, y: 1, r: 8 },
+        { x: 8, y: 1, r: 8 },
+        { x: 2, y: 1, r: 8 },
         { x: 10, y: 1, r: 8 },
-        { x: 0, y: 1, r: 8 },
-        { x: 0, y: 1, r: 8 },
-        { x: 0, y: 1, r: 8 },
-        { x: 0, y: 1, r: 8 },
+        { x: 2, y: 1, r: 8 },
+        { x: 2, y: 1, r: 8 },
+        { x: 2, y: 1, r: 8 },
+        { x: 2, y: 1, r: 8 },
 
         { x: -30, y: 0, r: 8 },
         { x: 40, y: 0, r: 8 },
@@ -647,6 +700,9 @@ export class WidgetsComponent {
           return indexes;
       }
       let indexes = getAllIndexes(this.bubbleChartLabels2, selectedDistractor);
+      let data = [...this.bubbleChartData2[0].data].filter((point, index) => {
+        return indexes.includes(index)?point:null;
+      })
       
       let minRadio = 5;
       let maxRadio = 10;
@@ -675,7 +731,183 @@ export class WidgetsComponent {
       this.charts.get(0).chart.ctx.stroke();
       this.charts.get(0).chart.update(); */
 
+      //this.tryForce(indexPoint,indexes, data);
+      
+      this.showForce();
+      
+
     } 
+
+  }
+
+  showForce() {
+
+    this.barChartData = [];
+    this.barChartData.push(
+    {
+      label: 'IC',
+      data: [-13],
+      backgroundColor: '#4DBD74',
+      stack: 'IC',
+      display: true
+    },
+    {
+      label: 'IC',
+      data: [89],
+      backgroundColor: '#4DBD74',
+      stack: 'IC',
+      display: true
+    },
+    {
+      label: 'CS',
+      data: [-13],
+      backgroundColor: '#F86C6B',
+      stack: 'CS',
+      display: true
+    },
+    {
+      label: 'CS',
+      data: [17],
+      backgroundColor: '#F86C6B',
+      stack: 'CS',
+      display: true
+    },
+    {
+      data: [17],
+      waterfall: {
+        dummyStack: true,
+      },
+      backgroundColor: 'transparent',
+      stack: 'PAT',
+      display: false
+    },
+    {
+      label: 'PAT',
+      data: [10],
+      backgroundColor: '#4DBD74',
+      stack: 'PAT',
+      display: true
+    },
+    {
+      data: [17],
+      waterfall: {
+        dummyStack: true,
+      },
+      backgroundColor: 'transparent',
+      stack: 'HD',
+      display: false
+    },
+    {
+      label: 'HD',
+      data: [10],
+      backgroundColor: '#F86C6B',
+      stack: 'HD',
+      display: true
+    },
+    {
+      data: [18],
+      waterfall: {
+        dummyStack: true,
+      },
+      backgroundColor: 'transparent',
+      stack: 'CC',
+      display: false
+    },
+    {
+      label: 'CC',
+      data: [9],
+      backgroundColor: '#FFC107',
+      stack: 'CC',
+      display: true
+    },
+    {
+      data: [10],
+      waterfall: {
+        dummyStack: true,
+      },
+      backgroundColor: 'transparent',
+      stack: 'LS',
+      display: false
+    },
+    {
+      label: 'LS',
+      data: [8],
+      backgroundColor: '#FFC107',
+      stack: 'LS',
+      display: true
+    })
+  }
+
+  tryForce(indexPoint,indexes, data) {
+    
+    let arrX = [...data].map( (element) => element.x)
+    let strX = [...data].map( (element) => "Number "+String(element.x) )
+
+    let sortedArr = [...arrX].sort((a,b) => (Math.abs(a) > Math.abs(b)) ? 1 : (Math.abs(a) < Math.abs(b)) ? -1 : -1 )/* .reverse() */
+
+    /* console.log(arrX, indexes, sortedArr ) */
+
+    let fN = [...this.shortfeaturesNames].reverse()
+
+    console.log("Plotting")
+    /* 
+    console.log(arrX, sortedArr, indexes, fN) */
+
+    let acum = 0;
+    let gap = 0;
+    
+    this.barChartData = [];
+
+    console.clear();
+    
+    sortedArr.forEach(element => {
+
+      let idx = arrX.indexOf(element);
+      let idxValue = indexes[idx]
+
+      
+      /* this.barChartData.push({
+        data: [base],
+        waterfall: {
+          dummyStack: true,
+        },
+        backgroundColor: 'blue',
+        stack: fN[idx],
+        display: false
+      }) */
+      
+      
+      
+      
+      this.barChartData.push( {
+        label: fN[idx],
+        data: [element],
+        backgroundColor: element < 0 ? '#F86C6B' : element < 75 ? '#FFC107' : '#4DBD74',
+        stack: fN[idx],
+        display: true
+      })
+
+      console.log("value: ", element, "acum at: ", acum, " on ", fN[idx])
+      
+
+      acum += element;
+      console.log("after ", acum)
+      
+
+     /*  base += element;
+      console.log(base) */
+      
+     /*  this.barChartData.push({
+        data: [base],
+        waterfall: {
+          dummyStack: true,
+        },
+        backgroundColor: 'transparent',
+        stack: fN[idx],
+        display: false
+      }) */
+
+    });
 
   }
 

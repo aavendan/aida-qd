@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="row"> 
-    <div class="col-5">
+    <!-- <div class="col-6">
       <div class="card">
         <div class="card-header">
           <strong>SHAP values features of {{currentDistractor}}</strong>
@@ -60,6 +60,23 @@
             [legend]="barChartLegend"
             [plugins]="barChartPlugins"
             [chartType]="barChartType"></canvas>
+        </div>
+      </div>
+    </div> -->
+    <div class="col-6">
+      <div class="card">
+        <div class="card-header">
+          <strong>SHAP values features of {{currentDistractor}}</strong>
+        </div>
+        <div class="card-body">
+          <canvas baseChart 
+            [datasets]="barChartDataSHAP"
+            [labels]="barChartLabelsSHAP"
+            [options]="barChartOptionsSHAP"
+            [plugins]="barChartPluginsSHAP"
+            [legend]="barChartLegendSHAP"
+            [chartType]="barChartTypeSHAP">
+          </canvas>
         </div>
       </div>
     </div>
