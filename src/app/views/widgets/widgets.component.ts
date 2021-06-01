@@ -474,18 +474,6 @@ export class WidgetsComponent {
   public barChartLegend = false;
   public barChartData: any[] = [];
 
-  //barSHAP
-  getColor(context) {
-    var index = context.dataIndex;
-    var value = context.dataset.data[index];
-
-    if (index == 0) return '#4DBD74';
-
-    if (index == 2 || index == 4 || index == 5) return '#FFC107';
-
-    if (index == 1 || index == 3) return '#F86C6B';
-  }
-
   public barChartOptionsSHAP: ChartOptions = {
     responsive: true,
     tooltips: {
@@ -495,10 +483,10 @@ export class WidgetsComponent {
     scales: {
       xAxes: [{
         display: true,
-        ticks: { 
+        /* ticks: { 
           min: -35, 
           max: 100, 
-        },
+        }, */
         scaleLabel: {
             display: true,
             labelString: 'E[f(x)] = 10'
@@ -515,60 +503,41 @@ export class WidgetsComponent {
       }]
     },
   };
-  public barChartLabelsSHAP: Label[] = [
-    'IC (92)',
-    'CS (-30)',
-    'PAT (10)',
-    'HD (-10)',
-    'CC (9)',
-    'LS (8)'
-  ];
+  
+  public barChartLabelsSHAP: Label[] = [];
   public barChartTypeSHAP: ChartType = 'horizontalBar';
   public barChartLegendSHAP = false;
   public barChartPluginsSHAP = [];
 
-  public barChartDataSHAP: ChartDataSets[] = [
-    {
-      data: [ -23, -23, 0, 0, 0, 0],
-      label: 'Series A',
-      stack: 'a',
-      backgroundColor: context => this.getColor(context)
-    },
-    {
-      data: [0, 0, 0, 0, 0, 0],
-      label: 'Series B',
-      stack: 'a',
-      backgroundColor: 'black'
-    },
-    {
-      data: [0, 0, 17, 17, 18, 10],
-      label: 'Series C',
-      stack: 'a',
-      backgroundColor: 'transparent'
-    },
-    {
-      data: [69, 17, 10, 10, 9, 8],
-      label: 'Series C',
-      stack: 'a',
-      backgroundColor: context => this.getColor(context)
-    }
-  ];
+  public barChartDataSHAP: ChartDataSets[] = []; 
 
   //forceSHAP
   public barChartOptionsForce: ChartOptions = {
     responsive: true,
     tooltips: {
       enabled: true
+    },
+    scales:{
+      xAxes: [
+        {
+          scaleLabel: {
+            display: false,
+            labelString: 'E[f(x)] = 10'
+          },
+          ticks: {
+            beginAtZero:true,
+            stepSize: 10,
+            callback: (value) => {
+              if(value == 0)
+                return 'E[f(x)]  = 10'
+              return Number(value)+10;
+            }
+          }
+        }
+      ]
     }
   };
-  public barcChartColorsForce: Array<any> = []/* [
-    { backgroundColor:"#4DBD74", borderWidth: "0.5", borderColor: "#000000" },
-    { backgroundColor:"#f72c2c", borderWidth: "0.5", borderColor: "#000000" },
-    { backgroundColor:"#a57d03", borderWidth: "0.5", borderColor: "#000000" },
-    { backgroundColor:"#F86C6B", borderWidth: "0.5", borderColor: "#000000" },
-    { backgroundColor:"#d19d04", borderWidth: "0.5", borderColor: "#000000" },
-    { backgroundColor:"#FFC107", borderWidth: "0.5", borderColor: "#000000" }
-  ]; */
+  public barChartColorsForce: Array<any> = []
   public barChartPluginsForce = [{
     afterDraw(chart, easing) {
       
@@ -589,14 +558,7 @@ export class WidgetsComponent {
   public barChartTypeForce: ChartType = 'horizontalBar';
   public barChartLegendForce = false;
 
-  public barChartDataForce: ChartDataSets[] = [];/*  [
-    { data: [92], label: 'IC', stack: 'a' },
-    { data: [-30], label: 'CS', stack: 'a' },
-    { data: [10], label: 'PAT', stack: 'a' },
-    { data: [-10], label: 'HD', stack: 'a' },
-    { data: [10], label: 'CS', stack: 'a' },
-    { data: [8], label: 'LS', stack: 'a' }
-  ]; */
+  public barChartDataForce: ChartDataSets[] = [];
   public barChartLabelsForce: string[] = ['Shap Forces'];
 
   //Bubble chart
@@ -791,7 +753,7 @@ export class WidgetsComponent {
 
   }
 
-  getColor2(value) {
+  getColor(value) {
     if(value < 0)
       return '#F86C6B';
     if(value >=0 && value < 75)
@@ -800,126 +762,125 @@ export class WidgetsComponent {
   }
 
   showForce() {
-    console.log("Force")
+    
     let arrX = [...this.currentDistractorValues].map( (element) => element.x)
     let sortedArr = [...arrX].sort((a,b) => (a > b) ? 1 : a < b ? -1 : -1 ).reverse()
     let fN = [...this.shortfeaturesNames]
-    let colors = [...sortedArr].map((element) => this.getColor2(element));
-
-    
-    console.clear();
-    console.log(sortedArr)
-    console.log(colors)
+    let colors = [...sortedArr].map((element) => this.getColor(element));
 
     this.barChartDataForce = [];
-    this.barcChartColorsForce = [];
+    this.barChartColorsForce = [];
+
+    /* this.barChartDataForce.push({ data: [10], label: 'base', stack: 'a' })
+    this.barcChartColorsForce.push({backgroundColor:'transparent'}) */
 
     sortedArr.forEach((element,idxEl) => {
 
       let idx = arrX.indexOf(element);
-      console.log(idx,fN[idx],element,this.getColor2(element))
-
+      
       this.barChartDataForce.push({ data: [element], label: fN[idx], stack: 'a' })
-      this.barcChartColorsForce.push({ backgroundColor:this.getColor2(element), borderWidth: "0.5", borderColor: "#000000" })
+      this.barChartColorsForce.push({ backgroundColor:this.getColor(element), borderWidth: "0.5", borderColor: "#000000" })
     });
   }  
 
-  showWaterfall() {
+  //barSHAP
+  getColorWaterfall(context, i, colors) {
+    var index = context.dataIndex;
+    var value = context.dataset.data[index];
 
-    this.barChartData = [];
-    this.barChartData.push(
-    {
-      label: 'IC',
-      data: [-13],
-      backgroundColor: '#4DBD74',
-      stack: 'IC',
-      display: true
-    },
-    {
-      label: 'IC',
-      data: [89],
-      backgroundColor: '#4DBD74',
-      stack: 'IC',
-      display: true
-    },
-    {
-      label: 'CS',
-      data: [-13],
-      backgroundColor: '#F86C6B',
-      stack: 'CS',
-      display: true
-    },
-    {
-      label: 'CS',
-      data: [17],
-      backgroundColor: '#F86C6B',
-      stack: 'CS',
-      display: true
-    },
-    {
-      data: [17],
-      waterfall: {
-        dummyStack: true,
-      },
-      backgroundColor: 'transparent',
-      stack: 'PAT',
-      display: false
-    },
-    {
-      label: 'PAT',
-      data: [10],
-      backgroundColor: '#4DBD74',
-      stack: 'PAT',
-      display: true
-    },
-    {
-      data: [17],
-      waterfall: {
-        dummyStack: true,
-      },
-      backgroundColor: 'transparent',
-      stack: 'HD',
-      display: false
-    },
-    {
-      label: 'HD',
-      data: [10],
-      backgroundColor: '#F86C6B',
-      stack: 'HD',
-      display: true
-    },
-    {
-      data: [18],
-      waterfall: {
-        dummyStack: true,
-      },
-      backgroundColor: 'transparent',
-      stack: 'CC',
-      display: false
-    },
-    {
-      label: 'CC',
-      data: [9],
-      backgroundColor: '#FFC107',
-      stack: 'CC',
-      display: true
-    },
-    {
-      data: [10],
-      waterfall: {
-        dummyStack: true,
-      },
-      backgroundColor: 'transparent',
-      stack: 'LS',
-      display: false
-    },
-    {
-      label: 'LS',
-      data: [8],
-      backgroundColor: '#FFC107',
-      stack: 'LS',
-      display: true
+    return (i == 1 || i == 2)? 'transparent': colors.reverse()[index]
+  }
+
+  getBorderColorWaterfall(context, i) {
+    var index = context.dataIndex;
+    return (i == 1 || i == 2)? 'transparent': 'black';
+  }
+
+  showWaterfall() {
+    console.clear();
+    console.log("Waterfall")
+
+    let arr = [...this.currentDistractorValues].map( (element) => element.x);
+    let fn = [...this.shortfeaturesNames]
+
+    let sortedArr = [...arr].sort((a,b) => (Math.abs(a) > Math.abs(b)) ? 1 : Math.abs(a) < Math.abs(b) ? -1 : 1 )
+    let sortedFn  = [...sortedArr].map(element => fn[arr.indexOf(element)])
+    let colors = [...sortedArr].map((element) => this.getColor(element));
+    
+    let base = 10;
+    let listbars = []
+    let ini = 0
+    let acum = 0
+
+    ini += base
+    acum += base
+
+    let bars = [0,0,0,0]
+
+    sortedArr.forEach( (value, i) => {
+      if(value > 0) {
+        if (ini > 0){
+          bars[2] = ini 
+          bars[3] = value
+        } else if(ini < 0){
+          if(Math.abs(acum) > Math.abs(value)){
+            bars[1] = Math.abs(acum) - Math.abs(value)
+            bars[0] = Math.abs(value)
+          } else if(Math.abs(acum) < Math.abs(value)) {
+            //C6
+            bars[0] = -Math.abs(acum)
+            bars[3] = Math.abs(value) - Math.abs(bars[0])
+          }     
+        }          
+      } else if (value < 0) {
+        if(ini < 0) {
+          bars[1] = Math.abs(ini) 
+          bars[0] = Math.abs(value)
+        } else if(ini > 0) {
+          if(Math.abs(acum) > Math.abs(value)){
+            bars[2] = Math.abs(acum) - Math.abs(value)
+            bars[3] = Math.abs(value)
+          }   
+          if(Math.abs(acum) < Math.abs(value)){
+            //C4
+            bars[0] = -Math.abs(Math.abs(acum) - Math.abs(value))
+            bars[3] = Math.abs(value) - Math.abs(bars[0])
+          }
+        }        
+      }
+
+      acum += value;
+      ini += value
+
+      listbars.push(bars)
+      bars = [...[0,0,0,0]]
     })
+
+    let transpose = a => a[0].map((_, c) => a.map(r => r[c]));
+    let barsT = transpose([...listbars.reverse()])
+
+    this.barChartDataSHAP = [];
+
+    /* console.log(listbars) */
+
+    barsT.forEach( (row, i) => {
+      this.barChartDataSHAP.push(
+        {
+          data: row,
+          label: 'Series '+i,
+          stack: 'a',
+          backgroundColor: context => this.getColorWaterfall(context, i, [...colors]),
+          borderWidth: 0.5, 
+          borderColor: context => this.getBorderColorWaterfall(context,i),
+        }
+      )
+    })
+
+    this.barChartLabelsSHAP = [];
+    [...sortedArr].reverse().forEach((el, i) => {
+      this.barChartLabelsSHAP.push(sortedFn[i]+" ("+el+") ")
+    });
+
   }
 
   tryForce(indexPoint,indexes, data) {
