@@ -36,6 +36,10 @@ export class WidgetsComponent {
   public currentDistractor: any = 'Distractor';
   public currentDistractorValues: Array<any> = [];
 
+  showSHAPPlots: boolean = false;
+  base = 10;
+  totalCurrentDistractorValues = 0;
+
   /* constructor() {
     setupPlugin()
    } */
@@ -736,7 +740,9 @@ export class WidgetsComponent {
       //Features' distractor values
       this.currentDistractorValues = this.bubbleChartData2[0].data.filter( 
         (currentValue, index) => indexes.includes(index)).reverse();
-      
+
+      this.totalCurrentDistractorValues = this.base + this.currentDistractorValues.reduce((a, b) => a + b.x, 0);
+
       /* console.log(this.charts.get(0).chart.ctx)
       this.charts.get(0).chart.ctx.beginPath();
       this.charts.get(0).chart.ctx.moveTo(0, 0);
@@ -748,7 +754,7 @@ export class WidgetsComponent {
       
       this.showWaterfall();
       this.showForce();
-
+      this.showSHAPPlots = true;
     } 
 
   }
@@ -793,12 +799,12 @@ export class WidgetsComponent {
 
   getBorderColorWaterfall(context, i) {
     var index = context.dataIndex;
-    return (i == 1 || i == 2)? 'transparent': 'black';
+    return (i == 1 || i == 2)? 'blank': 'transparent';
   }
 
   showWaterfall() {
-    console.clear();
-    console.log("Waterfall")
+    /* console.clear();
+    console.log("Waterfall") */
 
     let arr = [...this.currentDistractorValues].map( (element) => element.x);
     let fn = [...this.shortfeaturesNames]
@@ -807,13 +813,12 @@ export class WidgetsComponent {
     let sortedFn  = [...sortedArr].map(element => fn[arr.indexOf(element)])
     let colors = [...sortedArr].map((element) => this.getColor(element));
     
-    let base = 10;
     let listbars = []
     let ini = 0
     let acum = 0
 
-    ini += base
-    acum += base
+    ini += this.base;
+    acum += this.base;
 
     let bars = [0,0,0,0]
 
@@ -903,7 +908,7 @@ export class WidgetsComponent {
     
     this.barChartData = [];
 
-    console.clear();
+    /* console.clear(); */
     
     sortedArr.forEach(element => {
 

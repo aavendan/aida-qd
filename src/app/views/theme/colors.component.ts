@@ -14,11 +14,12 @@ export class ColorsComponent implements OnInit {
   @ViewChild('answer') answerRef:ElementRef;
 
 
-  SERVER_URL: string = "https://damp-beach-17296.herokuapp.com/http://193.190.127.206:5010/"
+  SERVER_URL: string = "https://damp-beach-17296.herokuapp.com/http://193.190.127.206:5010/" 
   question: string = ''
   result: Array<any> = [];
   distractors: Array<any> = [];
   dsuccess = 0; dwarning = 0; ddanger = 0;
+  loading: boolean;
 
   constructor(@Inject(DOCUMENT) private _document: any, private httpClient: HttpClient) {
     
@@ -67,6 +68,7 @@ export class ColorsComponent implements OnInit {
     this.ddanger = 0;
     this.dsuccess = 0;
     this.dwarning = 0;
+    this.loading = true;
 
     fetch(this.SERVER_URL, {
       method: 'POST',
@@ -92,7 +94,7 @@ export class ColorsComponent implements OnInit {
         })
       }
 
-
+      this.loading = false;
     })
     .catch(function(err) {
       console.log(err);

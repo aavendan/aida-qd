@@ -32,6 +32,14 @@
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <th>Base</th>
+                <td>
+                  <div class="text-center">
+                    {{base}}
+                  </div>
+                </td>
+              </tr>
               <tr *ngFor ="let sfN of shortfeaturesNames;let indexOfelement=index;">
                 <th>{{shortfeaturesNames[shortfeaturesNames.length-1-indexOfelement]}}</th>
                 <td [ngClass]="getClass(currentDistractorValues[shortfeaturesNames.length-1-indexOfelement])" >
@@ -41,28 +49,21 @@
                   </div>
                 </td>
               </tr>
+              <tr>
+                <th>Total</th>
+                <td [ngClass]="getClass({x:totalCurrentDistractorValues})">
+                  <div class="text-center">
+                    {{totalCurrentDistractorValues}}
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-  <div class="row"> 
-    <!-- <div class="col-6">
-      <div class="card">
-        <div class="card-header">
-          <strong>SHAP values features of {{currentDistractor}}</strong>
-        </div>
-        <div class="card-body">
-          <canvas baseChart class="chart"
-            [datasets]="barChartData"
-            [options]="barChartOptions"
-            [legend]="barChartLegend"
-            [plugins]="barChartPlugins"
-            [chartType]="barChartType"></canvas>
-        </div>
-      </div>
-    </div> -->
+  <div class="row" *ngIf="showSHAPPlots"> 
     <div class="col-6">
       <div class="card">
         <div class="card-header">
@@ -100,6 +101,21 @@
     </div>
   </div>
 </div>
+ <!-- <div class="col-6">
+      <div class="card">
+        <div class="card-header">
+          <strong>SHAP values features of {{currentDistractor}}</strong>
+        </div>
+        <div class="card-body">
+          <canvas baseChart class="chart"
+            [datasets]="barChartData"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [plugins]="barChartPlugins"
+            [chartType]="barChartType"></canvas>
+        </div>
+      </div>
+    </div> -->
 <!-- <div class="animated fadeIn">
   <div class="row">
     <div class="col-sm-6 col-lg-3">

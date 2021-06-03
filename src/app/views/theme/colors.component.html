@@ -85,7 +85,7 @@
       </div>
     </div>
   </div> -->
-  <div class="row" *ngIf="result.length>0">
+  <div class="row" *ngIf="result.length > 0 && !loading">
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
@@ -157,6 +157,21 @@
               <h6>Brand Dark Color</h6>
             </div>
           </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <strong><i class="icon-directions"></i> Distractors</strong>
+        </div>
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <strong>Loading...</strong>
+            <div class="spinner-grow ml-auto" role="status" aria-hidden="true"></div>
+          </div>
         </div>
       </div>
     </div>
