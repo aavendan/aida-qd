@@ -18,3 +18,16 @@ td.mid-value {
 td.down-value {
     background-color: #F86C6B;
 }
+
+.h7 {
+    font-size: 0.75rem;
+}
+
+th {
+    /* padding-top: 2px;
+    padding-bottom: 2px; */
+}
+
+td, th {
+    vertical-align: middle;
+}

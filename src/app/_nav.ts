@@ -39,15 +39,16 @@ export const navItems: INavData[] = [
     icon: 'icon-grid',
     children: [
       {
+        name: 'LIME',
+        url: '/explanations/lime',
+        icon: 'icon-graph',
+      },
+      {
         name: 'SHAP',
         url: '/explanations/shap',
         icon: 'icon-target'
       },
-      {
-        name: 'AIDA',
-        url: '/explanations/aida',
-        icon: 'icon-graph',
-      }
+      
     ]
   },
  /*  {

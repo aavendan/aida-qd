@@ -498,6 +498,17 @@ export class WidgetsComponent {
       }],
       yAxes: [{
         display: true,
+        ticks: {
+          fontSize: 10,
+          callback: (label, index, labels) => {
+            return label.toString().split(" ").join(' ')
+            /* if (/\s/.test(label)) {
+              return label.split(" ");
+            }else{
+              return label;
+            }  */             
+          }
+        }
         /* ticks: {
           autoSkip: false,
           maxRotation: 90,
@@ -566,11 +577,11 @@ export class WidgetsComponent {
   public barChartLabelsForce: string[] = ['Shap Forces'];
 
   //Bubble chart
-  public featuresNames = [...['Percentage of appearence in texts (PAT)', 
-  'Is capitalize (IC)','Count capitals (CC)',
-  'Has digits (HD)','Longest substring (LS)','Context similarity (CS)']].reverse();
+  public featuresNames = [...['Percentage of appearence in texts', 
+  'Is capitalize','Count capitals',
+  'Has digits','Longest substring','Context similarity']].reverse();
 
-  public shortfeaturesNames = [...['PAT','IC','CC','HD','LS','CS']].reverse();
+  public shortfeaturesNames = this.featuresNames; /* [...['PAT','IC','CC','HD','LS','CS']].reverse(); */
 
   public bubbleChartOptions2: ChartOptions = {
     legend: {
@@ -792,19 +803,19 @@ export class WidgetsComponent {
   //barSHAP
   getColorWaterfall(context, i, colors) {
     var index = context.dataIndex;
-    var value = context.dataset.data[index];
+    /* var value = context.dataset.data[index]; */
 
     return (i == 1 || i == 2)? 'transparent': colors.reverse()[index]
   }
 
   getBorderColorWaterfall(context, i) {
-    var index = context.dataIndex;
-    return (i == 1 || i == 2)? 'blank': 'transparent';
+    /* var index = context.dataIndex; */
+    return (i == 1 || i == 2)? 'transparent': 'transparent';
   }
 
   showWaterfall() {
-    /* console.clear();
-    console.log("Waterfall") */
+    console.clear();
+    console.log("Waterfall")
 
     let arr = [...this.currentDistractorValues].map( (element) => element.x);
     let fn = [...this.shortfeaturesNames]
@@ -839,15 +850,18 @@ export class WidgetsComponent {
         }          
       } else if (value < 0) {
         if(ini < 0) {
-          bars[1] = Math.abs(ini) 
-          bars[0] = Math.abs(value)
+          console.log("C2")
+          bars[1] = -Math.abs(ini) 
+          bars[0] = -Math.abs(value)
         } else if(ini > 0) {
           if(Math.abs(acum) > Math.abs(value)){
+            console.log("C3")
             bars[2] = Math.abs(acum) - Math.abs(value)
             bars[3] = Math.abs(value)
           }   
           if(Math.abs(acum) < Math.abs(value)){
             //C4
+            console.log("C4")
             bars[0] = -Math.abs(Math.abs(acum) - Math.abs(value))
             bars[3] = Math.abs(value) - Math.abs(bars[0])
           }
@@ -857,6 +871,7 @@ export class WidgetsComponent {
       acum += value;
       ini += value
 
+      console.log(bars)
       listbars.push(bars)
       bars = [...[0,0,0,0]]
     })
@@ -866,9 +881,11 @@ export class WidgetsComponent {
 
     this.barChartDataSHAP = [];
 
-    /* console.log(listbars) */
+    console.table(barsT)
 
     barsT.forEach( (row, i) => {
+      console.log("drawing row: ", row)
+
       this.barChartDataSHAP.push(
         {
           data: row,

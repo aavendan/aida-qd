@@ -29,13 +29,13 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            redirectTo: 'aida'
+            redirectTo: 'lime'
           },
           {
-            path: 'aida',
+            path: 'lime',
             component: ChartJSComponent,
             data: {
-              title: 'AIDA'
+              title: 'LIME'
             }
           },
           {
