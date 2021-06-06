@@ -5,6 +5,7 @@ import { ChartJSComponent } from './chartjs.component';
 import { ChartJSRoutingModule } from './chartjs-routing.module';
 
 import { WidgetsComponent } from './../widgets/widgets.component';
+import { FormsComponent } from './../base/forms.component';
 
 import {CommonModule} from '@angular/common';
 
@@ -14,6 +15,6 @@ import {CommonModule} from '@angular/common';
     ChartJSRoutingModule,
     ChartsModule
   ],
-  declarations: [ ChartJSComponent, WidgetsComponent ]
+  declarations: [ ChartJSComponent, WidgetsComponent, FormsComponent ]
 })
 export class ChartJSModule { }

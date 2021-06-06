@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ChartJSComponent } from './chartjs.component';
 import { WidgetsComponent } from './../widgets/widgets.component';
+import { FormsComponent } from './../base/forms.component';
 
 /* const routes: Routes = [
   {
@@ -30,6 +31,13 @@ const routes: Routes = [
           {
             path: '',
             redirectTo: 'lime'
+          },
+          {
+            path: 'featureimportance',
+            component: FormsComponent,
+            data: {
+              title: 'Feature importance'
+            }
           },
           {
             path: 'lime',
