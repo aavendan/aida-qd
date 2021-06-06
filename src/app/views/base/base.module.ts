@@ -64,7 +64,7 @@ import { BaseRoutingModule } from './base-routing.module';
   ],
   declarations: [
     CardsComponent,
-    FormsComponent,
+    /* FormsComponent, */
     SwitchesComponent,
     TablesComponent,
     TabsComponent,
