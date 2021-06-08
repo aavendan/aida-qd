@@ -4,7 +4,8 @@ import { pluginService, ChartDataSets, ChartType, ChartOptions } from 'chart.js'
 import { Label, Color, BaseChartDirective, PluginServiceGlobalRegistrationAndOptions } from 'ng2-charts';
 
 @Component({
-  templateUrl: 'forms.component.html'
+  templateUrl: 'forms.component.html',
+  styleUrls: ['forms.component.css']
 })
 export class FormsComponent {
 
@@ -28,8 +29,12 @@ export class FormsComponent {
         { 
           ticks: { 
             min: 0, 
-            max: 1.2, 
+            max: 10, 
           },
+          scaleLabel: {
+              display: true,
+              labelString: 'Importance'
+          }
         }
       ]
     }
@@ -37,17 +42,23 @@ export class FormsComponent {
   public barChartType: ChartType = 'horizontalBar';
   public barChartLegend = false;
 
+  getColor = (context) => {
+    let index = context.dataIndex;
+    let value = context.dataset.data[index];
+    return value <= 2.5 ? '#F86C6B' : value < 7.5 ? '#FFC107' : '#4DBD74';
+  }
+
   public barChartData: ChartDataSets[] = [
     { 
-      data: [0.95, 0.75, 0.6, 0.5, 0.4, 0.25], 
+      data: [9.5, 7.5, 6, 5, 4, 2.5], 
       label: 'Importance', 
       stack: 'a', 
       borderWidth: 0.1, 
       barThickness: 3,
-      backgroundColor: 'black', 
-      borderColor: 'black' 
+      borderColor: context => this.getColor(context),
+      backgroundColor: context => this.getColor(context),
     },
-   
+  
   ];
   public barChartLabels: string[] = this.featureNames;
 
