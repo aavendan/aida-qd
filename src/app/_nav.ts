@@ -39,6 +39,11 @@ export const navItems: INavData[] = [
     icon: 'icon-grid',
     children: [
       {
+        name: 'Text based',
+        url: '/explanations/textbased',
+        icon: 'icon-book-open'
+      },
+      {
         name: 'Feature importance',
         url: '/explanations/featureimportance',
         icon: 'icon-cursor'

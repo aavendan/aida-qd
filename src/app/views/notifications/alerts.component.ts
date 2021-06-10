@@ -2,6 +2,7 @@ import { Component, SecurityContext, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AlertConfig } from 'ngx-bootstrap/alert';
 
+
 // such override allows to keep some initial values
 
 export function getAlertConfig(): AlertConfig {

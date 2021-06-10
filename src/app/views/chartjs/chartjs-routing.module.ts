@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ChartJSComponent } from './chartjs.component';
 import { WidgetsComponent } from './../widgets/widgets.component';
 import { FormsComponent } from './../base/forms.component';
+import { AlertsComponent } from './../notifications/alerts.component';
 
 /* const routes: Routes = [
   {
@@ -30,7 +31,14 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            redirectTo: 'lime'
+            redirectTo: 'textbased'
+          },
+          {
+            path: 'textbased',
+            component: AlertsComponent,
+            data: {
+              title: 'Text based'
+            }
           },
           {
             path: 'featureimportance',

@@ -15,12 +15,16 @@ import { ModalsComponent } from './modals.component';
 // Notifications Routing
 import { NotificationsRoutingModule } from './notifications-routing.module';
 
+// Tooltip Component
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
 @NgModule({
   imports: [
     CommonModule,
     NotificationsRoutingModule,
     AlertModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TooltipModule.forRoot()
   ],
   declarations: [
     AlertsComponent,
