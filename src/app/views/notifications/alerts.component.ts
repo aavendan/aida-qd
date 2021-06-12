@@ -12,7 +12,8 @@ export function getAlertConfig(): AlertConfig {
 @Component({
   templateUrl: 'alerts.component.html',
   encapsulation: ViewEncapsulation.None,
-  styles: [
+  styleUrls: ['alerts.component.css'],
+ /*  styles: [
     `
   .alert-md-local {
     background-color: #009688;
@@ -20,7 +21,7 @@ export function getAlertConfig(): AlertConfig {
     color: #fff;
   }
   `
-  ],
+  ], */
   providers: [{ provide: AlertConfig, useFactory: getAlertConfig }]
 })
 export class AlertsComponent {

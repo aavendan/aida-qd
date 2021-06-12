@@ -17,7 +17,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Features',
-    icon: 'icon-book-open',
+    icon: 'icon-note',
     children: [
       {
         name: 'List',
@@ -41,7 +41,7 @@ export const navItems: INavData[] = [
       {
         name: 'Text based',
         url: '/explanations/textbased',
-        icon: 'icon-book-open'
+        icon: 'icon-docs'
       },
       {
         name: 'Feature importance',
