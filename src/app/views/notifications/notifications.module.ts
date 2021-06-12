@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 // Alert Component
-import { AlertModule } from 'ngx-bootstrap/alert';
-import { AlertsComponent } from './alerts.component';
+import { AlertModule } from 'ngx-bootstrap/alert';/* 
+import { AlertsComponent } from './alerts.component'; */
 
 import { BadgesComponent } from './badges.component';
 
@@ -27,7 +27,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     TooltipModule.forRoot()
   ],
   declarations: [
-    AlertsComponent,
+    /* AlertsComponent, */
     BadgesComponent,
     ModalsComponent
   ]
