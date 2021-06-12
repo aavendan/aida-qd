@@ -7,6 +7,8 @@ import { ChartJSRoutingModule } from './chartjs-routing.module';
 import { WidgetsComponent } from './../widgets/widgets.component';
 import { FormsComponent } from './../base/forms.component';
 
+import { AlertsComponent } from './../notifications/alerts.component';
+
 import {CommonModule} from '@angular/common';
 
 @NgModule({
@@ -15,6 +17,6 @@ import {CommonModule} from '@angular/common';
     ChartJSRoutingModule,
     ChartsModule
   ],
-  declarations: [ ChartJSComponent, WidgetsComponent, FormsComponent ]
+  declarations: [ ChartJSComponent, WidgetsComponent, FormsComponent, AlertsComponent ]
 })
 export class ChartJSModule { }

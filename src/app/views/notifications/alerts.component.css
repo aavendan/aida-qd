@@ -9,3 +9,19 @@
 .mymargin {
     margin-right: .05rem !important;
 }
+
+.callout-default {
+    border-left: 4px solid black !important;
+}
+
+.progress-bar-black {
+    background-color: black !important;
+}
+
+.opacity-4 {
+    opacity: 1;
+}
+
+.opacity-1 {
+    opacity: 0.3;
+}

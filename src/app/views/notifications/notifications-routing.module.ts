@@ -5,6 +5,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { BadgesComponent } from './badges.component';
 import { ModalsComponent } from './modals.component';
 
+import { BrowserModule } from '@angular/platform-browser'
+
 const routes: Routes = [
   {
     path: '',
@@ -42,7 +44,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [BrowserModule, RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class NotificationsRoutingModule {}

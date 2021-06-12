@@ -6,6 +6,8 @@ import { WidgetsComponent } from './../widgets/widgets.component';
 import { FormsComponent } from './../base/forms.component';
 import { AlertsComponent } from './../notifications/alerts.component';
 
+import { CommonModule } from '@angular/common';
+
 /* const routes: Routes = [
   {
     path: '',
@@ -68,7 +70,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
 export class ChartJSRoutingModule {}
